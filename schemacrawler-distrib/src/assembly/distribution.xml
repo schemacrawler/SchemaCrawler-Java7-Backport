@@ -23,7 +23,6 @@
             make-super-jar,
             make-super-distribution,
             make-main-distribution,
-            make-website-distribution,
             cleanup-distribution
           "
           description="Package all sub-project jars into the distributable jar" />
@@ -131,14 +130,8 @@
 
   <target name="make-main-distribution">
 
-    <mkdir dir="${distribution.target}/site" />
     <property name="main-distribution.staging.dir"
               location="${distribution.target}/_main-distribution" />
-    <move
-      file="${distribution.target}/site"
-      tofile="${main-distribution.staging.dir}"/>
-    <delete dir="${main-distribution.staging.dir}/css" />
-    <delete dir="${main-distribution.staging.dir}/images" />
 
     <property name="main-distribution.stem"
               value="schemacrawler-${SchemaCrawler.version}-main" />
@@ -172,16 +165,9 @@
       </classpath>
     </java>
 
-    <!-- Stage examples -->
-    <copy todir="${main-distribution.staging.dir}/examples/api">
-      <fileset dir="${SchemaCrawler.home}/schemacrawler-examplecode/src/main/java">
-        <include name="*.java" />
-      </fileset>
-    </copy>
-
     <!-- Copy config files -->
     <copy todir="${main-distribution.staging.dir}/examples/lint">
-      <fileset dir="${SchemaCrawler.home}/schemacrawler-site/src/site/resources">
+      <fileset dir="${SchemaCrawler.home}/schemacrawler-distrib/src/config">
         <include name="schemacrawler-linter-configs.xml" />
       </fileset>
     </copy>
@@ -224,43 +210,6 @@
 
   </target>
 
-  <target name="make-website-distribution">
-
-    <property name="website.staging.dir"
-              location="${distribution.target}/_website" />
-    <property name="website.location"
-              location="${SchemaCrawler.home}/schemacrawler-site/target/site" />
-    <property name="website.apidocs.location"
-              location="${SchemaCrawler.home}/schemacrawler-api/target/apidocs" />
-
-    <!-- No-op if the directories already exist, but do this so that
-         downstream steps do not fail -->
-    <mkdir dir="${website.staging.dir}" />
-    <mkdir dir="${website.location}" />
-    <mkdir dir="${website.apidocs.location}" />
-
-    <move todir="${website.staging.dir}">
-      <fileset dir="${website.location}">
-        <include name="**/*.*" />
-        <exclude name="**/apidocs/*.*" />
-      </fileset>
-    </move>
-
-    <move todir="${website.staging.dir}/apidocs">
-      <fileset dir="${website.apidocs.location}">
-        <include name="**/*.*" />
-      </fileset>
-    </move>
-
-    <java classname="schemacrawler.tools.text.utility.WriteStylesheetFile">
-      <arg value="${website.staging.dir}/css/sc.css"/>
-      <classpath>
-        <pathelement location="${schemacrawler.distribution.jar}"/>
-      </classpath>
-    </java>
-
-  </target>
-
   <target name="make-super-distribution">
 
     <copy todir="${schemacrawler.complete-distribution}">
@@ -275,10 +224,10 @@
       file="${schemacrawler.distribution.jar}"
       todir="${schemacrawler.complete-distribution}/lib"/>
     <copy
-      file="${SchemaCrawler.home}/schemacrawler-site/src/site/resources/config/schemacrawler.config.properties"
+      file="${SchemaCrawler.home}/schemacrawler-distrib/src/config/schemacrawler.config.properties"
       todir="${schemacrawler.complete-distribution}/config"/>
     <copy
-      file="${SchemaCrawler.home}/schemacrawler-site/src/site/resources/config/schemacrawler.colormap.properties"
+      file="${SchemaCrawler.home}/schemacrawler-distrib/src/config/schemacrawler.colormap.properties"
       todir="${schemacrawler.complete-distribution}/config"/>
 
     <create-dbserver-distribution database="offline" />

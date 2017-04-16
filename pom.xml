@@ -17,14 +17,6 @@
       <name>Eclipse Public License - v 1.0</name>
       <url>https://www.eclipse.org/legal/epl-v10.html</url>
     </license>
-    <license>
-      <name>GNU Lesser General Public License</name>
-      <url>http://www.gnu.org/licenses/lgpl.html</url>
-    </license>
-    <license>
-      <name>GNU General Public License</name>
-      <url>http://www.gnu.org/licenses/gpl.html</url>
-    </license>
   </licenses>
   <developers>
     <developer>
@@ -68,8 +60,7 @@
     <module>schemacrawler</module>
 
     <module>schemacrawler-lint</module>
-
-    <module>schemacrawler-examplecode</module>
+		
     <module>schemacrawler-dbtest</module>
 
     <module>schemacrawler-db2</module>
@@ -81,70 +72,10 @@
     <module>schemacrawler-sqlserver</module>
     <module>schemacrawler-sybaseiq</module>
     <module>schemacrawler-offline</module>
+		
+    <module>schemacrawler-distrib</module>
 
   </modules>
-  <profiles>
-    <profile>
-      <id>complete-deployment-build</id>
-      <activation>
-        <property>
-          <name>complete</name>
-        </property>
-      </activation>
-      <modules>
-        <module>schemacrawler-diff</module>
-
-        <module>schemacrawler-archetype-maven-project</module>
-        <module>schemacrawler-archetype-plugin-command</module>
-        <module>schemacrawler-archetype-plugin-lint</module>
-        <module>schemacrawler-archetype-plugin-dbconnector</module>
-
-        <module>schemacrawler-docs</module>
-        <module>schemacrawler-site</module>
-        <module>schemacrawler-distrib</module>
-        <module>schemacrawler-docker</module>
-      </modules>
-      <properties>
-        <maven.javadoc.skip>false</maven.javadoc.skip>
-      </properties>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>cobertura-maven-plugin</artifactId>
-            <version>2.7</version>
-            <dependencies>
-              <dependency>
-                <groupId>org.ow2.asm</groupId>
-                <artifactId>asm</artifactId>
-                <version>5.0.3</version>
-              </dependency>
-            </dependencies>
-            <configuration>
-              <format>xml</format>
-              <maxmem>256m</maxmem>
-              <ignoreTrivial>true</ignoreTrivial>
-              <!-- aggregated reports for multi-module projects -->
-              <aggregate>true</aggregate>
-              <instrumentation>
-                <ignores>
-                  <ignore>schemacrawler.*.test.*</ignore>
-                </ignores>
-                <excludes>
-                  <exclude>**/*Test.class</exclude>
-                </excludes>
-              </instrumentation>
-            </configuration>
-          </plugin>
-          <plugin>
-              <groupId>org.eluder.coveralls</groupId>
-              <artifactId>coveralls-maven-plugin</artifactId>
-              <version>4.0.0</version>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -198,7 +129,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <skip.signing.artifacts>true</skip.signing.artifacts>
-    <maven.javadoc.skip>true</maven.javadoc.skip>
+    <maven.javadoc.skip>false</maven.javadoc.skip>
   </properties>
   <build>
     <pluginManagement>
@@ -271,15 +202,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <compilerArguments>
-            <profile>compact2</profile>
-          </compilerArguments>
           <source>8</source>
           <target>8</target>
-          <compilerArgs>
-            <arg>-Werror</arg>
-            <!-- <arg>-profile compact1</arg> -->
-          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
