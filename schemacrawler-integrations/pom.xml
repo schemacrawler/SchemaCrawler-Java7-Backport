@@ -18,11 +18,13 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-commandline</artifactId>
       <version>${project.version}</version>
+			<classifier>java7</classifier>
     </dependency>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-api</artifactId>
       <version>${project.version}</version>
+			<classifier>java7-tests</classifier>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -30,12 +32,14 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
       <version>${project.version}</version>
+			<classifier>java7</classifier>
       <scope>test</scope>
     </dependency> 
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-tools</artifactId>
       <version>${project.version}</version>
+			<classifier>java7-tests</classifier>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>

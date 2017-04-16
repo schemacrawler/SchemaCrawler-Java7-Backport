@@ -17,6 +17,7 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-integrations</artifactId>
       <version>${project.version}</version>
+			<classifier>java7</classifier>
     </dependency>
   </dependencies>
   <build>

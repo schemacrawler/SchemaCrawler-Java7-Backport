@@ -15,18 +15,21 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-api</artifactId>
       <version>${project.version}</version>
+			<classifier>java7</classifier>
     </dependency>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
       <version>${project.version}</version>
+			<classifier>java7</classifier>
       <scope>test</scope>
     </dependency>    
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-api</artifactId>
       <version>${project.version}</version>
-      <type>test-jar</type>
+      <type>test-jar</type>			
+			<classifier>java7-tests</classifier>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -38,6 +41,9 @@
         <executions>
           <execution>
             <id>create-test-jar</id>
+            <configuration>
+              <classifier>java7-tests</classifier>
+            </configuration>                
             <goals>
               <goal>test-jar</goal>
             </goals>

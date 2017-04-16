@@ -15,6 +15,7 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
       <version>${project.version}</version>
+			<classifier>java7</classifier>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -26,9 +27,12 @@
         <executions>
           <execution>
             <id>create-test-jar</id>
+            <configuration>
+              <classifier>java7-tests</classifier>
+            </configuration>						
             <goals>
               <goal>test-jar</goal>
-            </goals>
+            </goals>			
           </execution>
         </executions>
       </plugin>
