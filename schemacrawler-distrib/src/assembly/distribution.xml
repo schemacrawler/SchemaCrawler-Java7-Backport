@@ -13,37 +13,14 @@
   <property name="schemacrawler.distribution.javadoc.jar"
             value="${distribution.target}/schemacrawler-${SchemaCrawler.version}-javadoc.jar" />
 
-  <available file="lgpl-3.0.txt" property="available.lgpl-3.0.txt"/>
-  <available file="bnd-1.50.0.jar" property="available.bnd.jar"/>
-  <available file="ivy-2.4.0.jar" property="available.ivy.jar"/>
-
   <target name="make-distribution"
           depends="
-            download-tools,
             make-super-jar,
             make-super-distribution,
             make-main-distribution,
             cleanup-distribution
           "
           description="Package all sub-project jars into the distributable jar" />
-
-
-  <target name="download-tools" depends="download-lgpl,download-bnd-tool,download-ivy"/>
-
-  <target name="download-lgpl" unless="available.lgpl-3.0.txt">
-    <get src="http://www.gnu.org/licenses/lgpl-3.0.txt"
-       dest="lgpl-3.0.txt" usetimestamp="true" />
-  </target>
-
-  <target name="download-bnd-tool" unless="available.bnd.jar">
-    <get src="http://repo1.maven.org/maven2/biz/aQute/bnd/1.50.0/bnd-1.50.0.jar"
-       dest="bnd-1.50.0.jar" usetimestamp="true" />
-  </target>
-
-  <target name="download-ivy" unless="available.ivy.jar">
-    <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/2.4.0/ivy-2.4.0.jar"
-       dest="ivy-2.4.0.jar" usetimestamp="true" />
-  </target>
 
   <target name="make-super-jar">
 
@@ -77,16 +54,6 @@
     <move file="${schemacrawler.distribution.jar}.work"
           tofile="${schemacrawler.distribution.jar}" />
   	
-    <taskdef
-    resource="aQute/bnd/ant/taskdef.properties"
-    classpath="bnd-1.50.0.jar"/>
-    <copy file="${distribution.assembly}/schemacrawler.bnd"
-          tofile="./schemacrawler-${SchemaCrawler.version}.bnd" />
-    <!--
-    <bndwrap output="${distribution.target}">
-        <fileset dir="${distribution.target}" includes="*.jar" />
-    </bndwrap>
-    -->
     <move overwrite="true" todir="${distribution.target}" >
         <fileset dir="${distribution.target}" includes="*.bar" />
         <mapper type="glob" from="*.bar" to="*.jar" />
@@ -137,45 +104,7 @@
               value="schemacrawler-${SchemaCrawler.version}-main" />
 
 
-    <!-- 1. STAGE FOR EXAMPLES -->
-
-    <!-- Copy licenses -->
-    <copy file="lgpl-3.0.txt"
-          tofile="${main-distribution.staging.dir}/LICENSE.txt" />
-
-    <!-- Create test database -->
-    <copy file="${SchemaCrawler.home}/schemacrawler-testdb/target/schemacrawler-testdb-${SchemaCrawler.version}.jar"
-          todir="${main-distribution.staging.dir}/_testdb/lib"/>
-    <copy todir="${main-distribution.staging.dir}/_testdb">
-      <fileset dir="${schemacrawler.complete-distribution}">
-        <include name="**/hsqldb*.jar" />
-      </fileset>
-    </copy>
-    <copy file="${SchemaCrawler.home}/schemacrawler-sqlite/src/test/resources/sc.db"
-          todir="${main-distribution.staging.dir}/_testdb"/>
-          	
-    <!-- Copy Apache Ant Ivy -->
-    <copy file="ivy-2.4.0.jar"
-          todir="${main-distribution.staging.dir}/_downloader" />
-
-    <java classname="schemacrawler.tools.text.utility.WriteStylesheetFile">
-      <arg value="${main-distribution.staging.dir}/examples/sc.css"/>
-      <classpath>
-        <pathelement location="${schemacrawler.distribution.jar}"/>
-      </classpath>
-    </java>
-
-    <!-- Copy config files -->
-    <copy todir="${main-distribution.staging.dir}/examples/lint">
-      <fileset dir="${SchemaCrawler.home}/schemacrawler-distrib/src/config">
-        <include name="schemacrawler-linter-configs.xml" />
-      </fileset>
-    </copy>
-    <copy todir="${main-distribution.staging.dir}/examples/spring">
-      <fileset dir="${SchemaCrawler.home}/schemacrawler-integrations/src/test/resources">
-        <include name="context.xml" />
-      </fileset>
-    </copy>
+    <!-- 1. STAGE FOR MAIN DOWNLOAD -->
 
     <move
       file="${schemacrawler.complete-distribution}"
@@ -190,7 +119,7 @@
       tablength="2"
       outputencoding="UTF-8" />
 
-    <!-- 2. CREATE BINARY DISTRIBUTION FROM THE STAGED EXAMPLES -->
+    <!-- 2. CREATE BINARY DISTRIBUTION -->
 
     <!-- Create zip file for distribution -->
     <delete file="${distribution.target}/${main-distribution.stem}.zip" />
@@ -219,7 +148,7 @@
       </fileset>
     </copy>
 
-    <!-- Move SchemaCrawler distribution, for use in the examples -->
+    <!-- Move SchemaCrawler distribution -->
     <copy
       file="${schemacrawler.distribution.jar}"
       todir="${schemacrawler.complete-distribution}/lib"/>
@@ -229,16 +158,6 @@
     <copy
       file="${SchemaCrawler.home}/schemacrawler-distrib/src/config/schemacrawler.colormap.properties"
       todir="${schemacrawler.complete-distribution}/config"/>
-
-    <create-dbserver-distribution database="offline" />
-    <create-dbserver-distribution database="db2" />
-    <create-dbserver-distribution database="hsqldb" />
-    <create-dbserver-distribution database="mysql" />
-    <create-dbserver-distribution database="oracle" />
-    <create-dbserver-distribution database="postgresql" />
-    <create-dbserver-distribution database="sqlite" />
-    <create-dbserver-distribution database="sqlserver" />
-    <create-dbserver-distribution database="sybaseiq" />
 
   </target>
 
@@ -253,19 +172,5 @@
     </delete>
 
   </target>
-
-  <macrodef name="create-dbserver-distribution">
-
-    <attribute name="database" />
-
-    <sequential>
-
-      <copy file="${SchemaCrawler.home}/schemacrawler-@{database}/DRIVER.LICENSE.txt"
-            tofile="${schemacrawler.complete-distribution}/DRIVER.LICENSE-@{database}.txt"
-            failonerror="false" />
-
-    </sequential>
-
-  </macrodef>
-
+	
 </project>
