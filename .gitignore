@@ -6,10 +6,7 @@
 /schemacrawler-distrib/*.bnd
 /schemacrawler-distrib/*.jar
 /schemacrawler-distrib/src/assembly/schemacrawler.pom.asc
-/schemacrawler-docs/*.png
-/schemacrawler-docs/*.txt
-/schemacrawler-docs/*.xml
-/schemacrawler-docs/schemacrawler.config.properties.1
+/schemacrawler-docs/
 /schemacrawler-oracle/*.jar
 /schemacrawler-sybaseiq/*.jar
 /schemacrawler/*.bnd
