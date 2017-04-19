@@ -34,7 +34,7 @@ import static java.nio.file.Files.readAllBytes;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.function.Supplier;
+import com.annimon.stream.function.Supplier;
 
 public final class FileContents
   implements Supplier<String>

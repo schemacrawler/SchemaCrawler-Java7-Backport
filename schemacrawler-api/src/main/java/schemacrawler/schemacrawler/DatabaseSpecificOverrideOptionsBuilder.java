@@ -28,7 +28,7 @@ http://www.gnu.org/licenses/
 package schemacrawler.schemacrawler;
 
 
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.crawl.MetadataRetrievalStrategy;
 
@@ -169,7 +169,7 @@ public class DatabaseSpecificOverrideOptionsBuilder
    * Overrides the JDBC driver provided information about the identifier
    * quote string.
    *
-   * @param getIdentifierQuoteString
+   * @param identifierQuoteString
    *        Value for the override
    */
   public DatabaseSpecificOverrideOptionsBuilder identifierQuoteString(final String identifierQuoteString)

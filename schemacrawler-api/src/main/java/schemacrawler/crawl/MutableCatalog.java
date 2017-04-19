@@ -33,8 +33,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.annimon.stream.Optional;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.ColumnDataType;

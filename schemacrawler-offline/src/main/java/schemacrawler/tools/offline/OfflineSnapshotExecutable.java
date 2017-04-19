@@ -36,7 +36,7 @@ import static schemacrawler.filter.FilterFactory.tableFilter;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Connection;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 import java.util.logging.Level;
 
 import schemacrawler.crawl.RoutinesReducer;

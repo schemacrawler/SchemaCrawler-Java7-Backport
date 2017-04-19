@@ -40,7 +40,10 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
+import com.annimon.stream.function.Supplier;
 import java.util.logging.Level;
 
 import schemacrawler.schemacrawler.SchemaCrawlerException;
@@ -158,7 +161,7 @@ public class GraphProcessExecutor
     final String message = String
       .format("%s%nGenerate your diagram manually, using:%n%s",
               readResourceFully("/dot.error.txt"),
-              String.join(" ", quoteCommandLine(command)));
+              Stream.of(quoteCommandLine(command)).collect(Collectors.joining(" ")));
 
     try
     {

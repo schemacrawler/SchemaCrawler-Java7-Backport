@@ -34,7 +34,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.Index;
 import schemacrawler.schema.IndexColumn;

@@ -31,7 +31,7 @@ package schemacrawler.tools.analysis.associations;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.Table;
@@ -74,7 +74,7 @@ public final class CatalogWithAssociations
   @Override
   public final <T> Optional<T> lookupAttribute(final String name)
   {
-    return Optional.of(getAttribute(name));
+    return Optional.of(this.<T>getAttribute(name));
   }
 
 }

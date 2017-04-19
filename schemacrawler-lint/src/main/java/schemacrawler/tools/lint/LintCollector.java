@@ -51,8 +51,7 @@ public final class LintCollector
       return null;
     }
 
-    final List<Lint<? extends Serializable>> lints = new ArrayList<>(namedObject
-      .getAttribute(LINT_KEY, new ArrayList<>()));
+    final List<Lint<? extends Serializable>> lints = new ArrayList<>(namedObject.getAttribute(LINT_KEY, new ArrayList<Lint<? extends Serializable>>()));
     Collections.sort(lints);
     return lints;
   }

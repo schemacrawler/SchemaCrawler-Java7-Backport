@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.NamedObject;
 import sf.util.ObjectToString;

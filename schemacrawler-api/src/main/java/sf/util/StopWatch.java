@@ -41,7 +41,7 @@ import org.threeten.bp.format.DateTimeFormatterBuilder;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.function.Supplier;
+import com.annimon.stream.function.Supplier;
 
 public final class StopWatch
 {
@@ -101,7 +101,7 @@ public final class StopWatch
   /**
    * Return whether the stop watch is currently running.
    *
-   * @see #currentTaskName()
+   * @see #currentTaskName
    */
   public boolean isRunning()
   {
@@ -157,24 +157,26 @@ public final class StopWatch
    */
   public Supplier<String> stringify()
   {
-    return () -> {
-      final StringBuilder buffer = new StringBuilder(1024);
+    return new Supplier<String>() {
+      @Override
+      public String get() {
+        final StringBuilder buffer = new StringBuilder(1024);
 
-      final LocalTime totalDurationLocal = LocalTime
-        .ofNanoOfDay(totalDuration.toNanos());
-      buffer.append(String.format("Total time taken for <%s> - %s hours%n",
-                                  id,
-                                  totalDurationLocal.format(df)));
+        final LocalTime totalDurationLocal = LocalTime
+                .ofNanoOfDay(totalDuration.toNanos());
+        buffer.append(String.format("Total time taken for <%s> - %s hours%n",
+                id,
+                totalDurationLocal.format(df)));
 
-      for (final TaskInfo task: tasks)
-      {
-        buffer.append(String
-          .format("-%5.1f%% - %s%n",
-                  calculatePercentage(task.getDuration(), totalDuration),
-                  task));
+        for (final TaskInfo task : tasks) {
+          buffer.append(String
+                  .format("-%5.1f%% - %s%n",
+                          StopWatch.this.calculatePercentage(task.getDuration(), totalDuration),
+                          task));
+        }
+
+        return buffer.toString();
       }
-
-      return buffer.toString();
     };
   }
 

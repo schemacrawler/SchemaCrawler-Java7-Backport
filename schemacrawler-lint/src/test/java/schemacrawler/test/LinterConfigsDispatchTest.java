@@ -169,6 +169,7 @@ public class LinterConfigsDispatchTest
       final Path tempFile = Files.createTempFile("sc", ".log");
       Files.write(tempFile,
                   Arrays.asList(sysErrLog.getLogWithNormalizedLineSeparator()),
+                  StandardCharsets.UTF_8,
                   StandardOpenOption.WRITE);
       sysErrLog.clearLog();
 

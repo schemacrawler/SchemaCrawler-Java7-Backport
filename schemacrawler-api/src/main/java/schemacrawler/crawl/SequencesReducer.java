@@ -39,8 +39,8 @@ public final class SequencesReducer
 
   public SequencesReducer(final SchemaCrawlerOptions options)
   {
-    super(options == null? new IncludeAllFilter<>()
-                         : new DatabaseObjectFilter<>(options,
+    super(options == null? new IncludeAllFilter<Sequence>()
+                         : new DatabaseObjectFilter<Sequence>(options,
                                                       options
                                                         .getSequenceInclusionRule()));
   }

@@ -37,7 +37,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
+
+import java.util.concurrent.Callable;
 import java.util.logging.Level;
 
 import schemacrawler.schema.Catalog;
@@ -110,37 +112,36 @@ public final class SchemaCrawler
                                                                         catalog,
                                                                         options);
 
-      stopWatch.time("retrieveSystemColumnDataTypes", () -> {
-        if (infoLevel.isRetrieveColumnDataTypes())
-        {
-          LOGGER.log(Level.INFO, "Retrieving system column data types");
-          retriever.retrieveSystemColumnDataTypes();
+      stopWatch.time("retrieveSystemColumnDataTypes", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveColumnDataTypes()) {
+            LOGGER.log(Level.INFO, "Retrieving system column data types");
+            retriever.retrieveSystemColumnDataTypes();
+          } else {
+            LOGGER
+                    .log(Level.INFO,
+                            "Not retrieving system column data types, since this was not requested");
+          }
+          return null;
         }
-        else
-        {
-          LOGGER
-            .log(Level.INFO,
-                 "Not retrieving system column data types, since this was not requested");
-        }
-        return null;
       });
 
-      stopWatch.time("retrieveUserDefinedColumnDataTypes", () -> {
-        if (infoLevel.isRetrieveUserDefinedColumnDataTypes())
-        {
-          LOGGER.log(Level.INFO, "Retrieving user column data types");
-          for (final Schema schema: retriever.getAllSchemas())
-          {
-            retriever.retrieveUserDefinedColumnDataTypes(schema);
+      stopWatch.time("retrieveUserDefinedColumnDataTypes", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveUserDefinedColumnDataTypes()) {
+            LOGGER.log(Level.INFO, "Retrieving user column data types");
+            for (final Schema schema : retriever.getAllSchemas()) {
+              retriever.retrieveUserDefinedColumnDataTypes(schema);
+            }
+          } else {
+            LOGGER
+                    .log(Level.INFO,
+                            "Not retrieving user column data types, since this was not requested");
           }
+          return null;
         }
-        else
-        {
-          LOGGER
-            .log(Level.INFO,
-                 "Not retrieving user column data types, since this was not requested");
-        }
-        return null;
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());
@@ -188,49 +189,58 @@ public final class SchemaCrawler
 
       LOGGER.log(Level.INFO, "Retrieving database information");
 
-      stopWatch.time("retrieveDatabaseInfo", () -> {
-        retriever.retrieveDatabaseInfo();
-        return null;
+      stopWatch.time("retrieveDatabaseInfo", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          retriever.retrieveDatabaseInfo();
+          return null;
+        }
       });
 
-      stopWatch.time("retrieveAdditionalDatabaseInfo", () -> {
-        if (infoLevel.isRetrieveAdditionalDatabaseInfo())
-        {
-          retriever.retrieveAdditionalDatabaseInfo();
+      stopWatch.time("retrieveAdditionalDatabaseInfo", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveAdditionalDatabaseInfo()) {
+            retriever.retrieveAdditionalDatabaseInfo();
+          } else {
+            LOGGER
+                    .log(Level.INFO,
+                            "Not retrieving additional database information, since this was not requested");
+          }
+          return null;
         }
-        else
-        {
-          LOGGER
-            .log(Level.INFO,
-                 "Not retrieving additional database information, since this was not requested");
-        }
-        return null;
       });
 
       LOGGER.log(Level.INFO, "Retrieving JDBC driver information");
-      stopWatch.time("retrieveJdbcDriverInfo", () -> {
-        retriever.retrieveJdbcDriverInfo();
-        return null;
+      stopWatch.time("retrieveJdbcDriverInfo", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          retriever.retrieveJdbcDriverInfo();
+          return null;
+        }
       });
 
-      stopWatch.time("retrieveAdditionalJdbcDriverInfo", () -> {
-        if (infoLevel.isRetrieveAdditionalJdbcDriverInfo())
-        {
-          retriever.retrieveAdditionalJdbcDriverInfo();
+      stopWatch.time("retrieveAdditionalJdbcDriverInfo", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveAdditionalJdbcDriverInfo()) {
+            retriever.retrieveAdditionalJdbcDriverInfo();
+          } else {
+            LOGGER
+                    .log(Level.INFO,
+                            "Not retrieving additional JDBC driver information, since this was not requested");
+          }
+          return null;
         }
-        else
-        {
-          LOGGER
-            .log(Level.INFO,
-                 "Not retrieving additional JDBC driver information, since this was not requested");
-        }
-        return null;
       });
 
       LOGGER.log(Level.INFO, "Retrieving SchemaCrawler crawl information");
-      stopWatch.time("retrieveCrawlHeaderInfo", () -> {
-        retriever.retrieveCrawlHeaderInfo(options.getTitle());
-        return null;
+      stopWatch.time("retrieveCrawlHeaderInfo", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          retriever.retrieveCrawlHeaderInfo(options.getTitle());
+          return null;
+        }
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());
@@ -282,21 +292,21 @@ public final class SchemaCrawler
                                                options);
       final Collection<RoutineType> routineTypes = options.getRoutineTypes();
 
-      stopWatch.time("retrieveRoutines", () -> {
-        for (final Schema schema: retriever.getAllSchemas())
-        {
-          if (routineTypes.contains(RoutineType.procedure))
-          {
-            retriever.retrieveProcedures(schema,
-                                         options.getRoutineInclusionRule());
+      stopWatch.time("retrieveRoutines", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          for (final Schema schema : retriever.getAllSchemas()) {
+            if (routineTypes.contains(RoutineType.procedure)) {
+              retriever.retrieveProcedures(schema,
+                      options.getRoutineInclusionRule());
+            }
+            if (routineTypes.contains(RoutineType.function)) {
+              retriever.retrieveFunctions(schema,
+                      options.getRoutineInclusionRule());
+            }
           }
-          if (routineTypes.contains(RoutineType.function))
-          {
-            retriever.retrieveFunctions(schema,
-                                        options.getRoutineInclusionRule());
-          }
+          return null;
         }
-        return null;
       });
 
       final NamedObjectList<MutableRoutine> allRoutines = catalog
@@ -308,48 +318,52 @@ public final class SchemaCrawler
         return;
       }
 
-      stopWatch.time("retrieveRoutineColumns", () -> {
-        LOGGER.log(Level.INFO, "Retrieving routine columns");
-        for (final MutableRoutine routine: allRoutines)
-        {
-          if (infoLevel.isRetrieveRoutineColumns())
-          {
-            if (routine instanceof MutableProcedure
-                && routineTypes.contains(RoutineType.procedure))
-            {
-              retriever
-                .retrieveProcedureColumns((MutableProcedure) routine,
-                                          options
-                                            .getRoutineColumnInclusionRule());
-            }
+      stopWatch.time("retrieveRoutineColumns", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          LOGGER.log(Level.INFO, "Retrieving routine columns");
+          for (final MutableRoutine routine : allRoutines) {
+            if (infoLevel.isRetrieveRoutineColumns()) {
+              if (routine instanceof MutableProcedure
+                      && routineTypes.contains(RoutineType.procedure)) {
+                retriever
+                        .retrieveProcedureColumns((MutableProcedure) routine,
+                                options
+                                        .getRoutineColumnInclusionRule());
+              }
 
-            if (routine instanceof MutableFunction
-                && routineTypes.contains(RoutineType.function))
-            {
-              retriever
-                .retrieveFunctionColumns((MutableFunction) routine,
-                                         options
-                                           .getRoutineColumnInclusionRule());
+              if (routine instanceof MutableFunction
+                      && routineTypes.contains(RoutineType.function)) {
+                retriever
+                        .retrieveFunctionColumns((MutableFunction) routine,
+                                options
+                                        .getRoutineColumnInclusionRule());
+              }
             }
           }
+          return null;
         }
-        return null;
       });
 
-      stopWatch.time("filterRoutines", () -> {
-        // Filter the list of routines based on grep criteria
-        final Predicate<Routine> routineFilter = routineFilter(options);
-        ((Reducible) catalog).reduce(Routine.class,
-                                     new RoutinesReducer(routineFilter));
-        return null;
+      stopWatch.time("filterRoutines", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          // Filter the list of routines based on grep criteria
+          final Predicate<Routine> routineFilter = routineFilter(options);
+          ((Reducible) catalog).reduce(Routine.class,
+                  new RoutinesReducer(routineFilter));
+          return null;
+        }
       });
 
-      stopWatch.time("retrieveRoutineInformation", () -> {
-        if (infoLevel.isRetrieveRoutineInformation())
-        {
-          retrieverExtra.retrieveRoutineInformation();
+      stopWatch.time("retrieveRoutineInformation", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveRoutineInformation()) {
+            retrieverExtra.retrieveRoutineInformation();
+          }
+          return null;
         }
-        return null;
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());
@@ -387,14 +401,20 @@ public final class SchemaCrawler
                                                             catalog,
                                                             options);
 
-      stopWatch.time("retrieveSchemas", () -> {
-        retriever.retrieveSchemas(options.getSchemaInclusionRule());
-        return null;
+      stopWatch.time("retrieveSchemas", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          retriever.retrieveSchemas(options.getSchemaInclusionRule());
+          return null;
+        }
       });
 
-      stopWatch.time("sortAndFilterSchemas", () -> {
-        ((Reducible) catalog).reduce(Schema.class, new SchemasReducer(options));
-        return null;
+      stopWatch.time("sortAndFilterSchemas", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          ((Reducible) catalog).reduce(Schema.class, new SchemasReducer(options));
+          return null;
+        }
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());
@@ -450,16 +470,22 @@ public final class SchemaCrawler
                                              catalog,
                                              options);
 
-      stopWatch.time("retrieveSequenceInformation", () -> {
-        retrieverExtra
-          .retrieveSequenceInformation(options.getSequenceInclusionRule());
-        return null;
+      stopWatch.time("retrieveSequenceInformation", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          retrieverExtra
+                  .retrieveSequenceInformation(options.getSequenceInclusionRule());
+          return null;
+        }
       });
 
-      stopWatch.time("sortAndFilterSequences", () -> {
-        ((Reducible) catalog).reduce(Sequence.class,
-                                     new SequencesReducer(options));
-        return null;
+      stopWatch.time("sortAndFilterSequences", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          ((Reducible) catalog).reduce(Sequence.class,
+                  new SequencesReducer(options));
+          return null;
+        }
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());
@@ -507,16 +533,22 @@ public final class SchemaCrawler
       retrieverExtra = new SynonymRetriever(retrieverConnection,
                                             catalog,
                                             options);
-      stopWatch.time("retrieveSynonymInformation", () -> {
-        retrieverExtra
-          .retrieveSynonymInformation(options.getSynonymInclusionRule());
-        return null;
+      stopWatch.time("retrieveSynonymInformation", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          retrieverExtra
+                  .retrieveSynonymInformation(options.getSynonymInclusionRule());
+          return null;
+        }
       });
 
-      stopWatch.time("sortAndFilterSynonms", () -> {
-        ((Reducible) catalog).reduce(Synonym.class,
-                                     new SynonymsReducer(options));
-        return null;
+      stopWatch.time("sortAndFilterSynonms", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          ((Reducible) catalog).reduce(Synonym.class,
+                  new SynonymsReducer(options));
+          return null;
+        }
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());
@@ -579,14 +611,17 @@ public final class SchemaCrawler
                                                                      catalog,
                                                                      options);
 
-      stopWatch.time("retrieveTables", () -> {
-        final NamedObjectList<SchemaReference> schemas = retriever
-          .getAllSchemas();
-        retriever.retrieveTables(schemas,
-                                 options.getTableNamePattern(),
-                                 options.getTableTypes(),
-                                 options.getTableInclusionRule());
-        return null;
+      stopWatch.time("retrieveTables", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          final NamedObjectList<SchemaReference> schemas = retriever
+                  .getAllSchemas();
+          retriever.retrieveTables(schemas,
+                  options.getTableNamePattern(),
+                  options.getTableTypes(),
+                  options.getTableInclusionRule());
+          return null;
+        }
       });
 
       final NamedObjectList<MutableTable> allTables = catalog.getAllTables();
@@ -597,149 +632,173 @@ public final class SchemaCrawler
         return;
       }
 
-      stopWatch.time("retrieveColumns", () -> {
-        if (infoLevel.isRetrieveTableColumns())
-        {
-          columnRetriever.retrieveColumns(allTables,
-                                          options.getColumnInclusionRule());
+      stopWatch.time("retrieveColumns", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveTableColumns()) {
+            columnRetriever.retrieveColumns(allTables,
+                    options.getColumnInclusionRule());
+          }
+          if (infoLevel.isRetrieveHiddenTableColumns()) {
+            columnRetriever
+                    .retrieveHiddenColumns(allTables, options.getColumnInclusionRule());
+          }
+          return null;
         }
-        if (infoLevel.isRetrieveHiddenTableColumns())
-        {
-          columnRetriever
-            .retrieveHiddenColumns(allTables, options.getColumnInclusionRule());
-        }
-        return null;
       });
 
-      stopWatch.time("retrieveForeignKeys", () -> {
-        if (infoLevel.isRetrieveForeignKeys())
-        {
-          if (infoLevel.isRetrieveTableColumns())
-          {
-            fkRetriever.retrieveForeignKeys(allTables);
-            if (infoLevel.isRetrieveForeignKeyDefinitions())
-            {
-              fkRetriever.retrieveForeignKeyDefinitions(allTables);
+      stopWatch.time("retrieveForeignKeys", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveForeignKeys()) {
+            if (infoLevel.isRetrieveTableColumns()) {
+              fkRetriever.retrieveForeignKeys(allTables);
+              if (infoLevel.isRetrieveForeignKeyDefinitions()) {
+                fkRetriever.retrieveForeignKeyDefinitions(allTables);
+              }
+            }
+          } else {
+            LOGGER
+                    .log(Level.WARNING,
+                            "Foreign-keys are not being retrieved, so tables cannot be sorted using the natural sort order");
+          }
+          return null;
+        }
+      });
+
+      stopWatch.time("filterAndSortTables", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          // Filter the list of tables based on grep criteria, and
+          // parent-child relationships
+          final Predicate<Table> tableFilter = tableFilter(options);
+          ((Reducible) catalog).reduce(Table.class,
+                  new TablesReducer(options, tableFilter));
+
+          // Sort the remaining tables
+          final TablesGraph tablesGraph = new TablesGraph(allTables);
+          tablesGraph.setTablesSortIndexes();
+
+          return null;
+        }
+      });
+
+      stopWatch.time("retrieveIndexes", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          LOGGER.log(Level.INFO, "Retrieving primary keys and indexes");
+          if (infoLevel.isRetrieveTableColumns()) {
+            if (infoLevel.isRetrieveIndexes()) {
+              indexRetriever.retrieveIndexes(allTables);
+            }
+            // Setting primary keys will use indexes with a similar name,
+            // if available
+            indexRetriever.retrievePrimaryKeys(allTables);
+            if (infoLevel.isRetrievePrimaryKeyDefinitions()) {
+              retrieverExtra.retrievePrimaryKeyDefinitions(allTables);
             }
           }
+          return null;
         }
-        else
-        {
-          LOGGER
-            .log(Level.WARNING,
-                 "Foreign-keys are not being retrieved, so tables cannot be sorted using the natural sort order");
-        }
-        return null;
       });
 
-      stopWatch.time("filterAndSortTables", () -> {
-        // Filter the list of tables based on grep criteria, and
-        // parent-child relationships
-        final Predicate<Table> tableFilter = tableFilter(options);
-        ((Reducible) catalog).reduce(Table.class,
-                                     new TablesReducer(options, tableFilter));
-
-        // Sort the remaining tables
-        final TablesGraph tablesGraph = new TablesGraph(allTables);
-        tablesGraph.setTablesSortIndexes();
-
-        return null;
-      });
-
-      stopWatch.time("retrieveIndexes", () -> {
-        LOGGER.log(Level.INFO, "Retrieving primary keys and indexes");
-        if (infoLevel.isRetrieveTableColumns())
-        {
-          if (infoLevel.isRetrieveIndexes())
-          {
-            indexRetriever.retrieveIndexes(allTables);
+      stopWatch.time("retrieveTableConstraintInformation", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveTableConstraintInformation()) {
+            constraintRetriever.retrieveTableConstraintInformation();
           }
-          // Setting primary keys will use indexes with a similar name,
-          // if available
-          indexRetriever.retrievePrimaryKeys(allTables);
-          if (infoLevel.isRetrievePrimaryKeyDefinitions())
-          {
-            retrieverExtra.retrievePrimaryKeyDefinitions(allTables);
+          return null;
+        }
+      });
+      stopWatch.time("isRetrieveTableConstraintDefinitions", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveTableConstraintDefinitions()) {
+            constraintRetriever.retrieveTableConstraintDefinitions();
           }
+          return null;
         }
-        return null;
       });
-
-      stopWatch.time("retrieveTableConstraintInformation", () -> {
-        if (infoLevel.isRetrieveTableConstraintInformation())
-        {
-          constraintRetriever.retrieveTableConstraintInformation();
-        }
-        return null;
-      });
-      stopWatch.time("isRetrieveTableConstraintDefinitions", () -> {
-        if (infoLevel.isRetrieveTableConstraintDefinitions())
-        {
-          constraintRetriever.retrieveTableConstraintDefinitions();
-        }
-        return null;
-      });
-      stopWatch.time("retrieveTriggerInformation", () -> {
-        if (infoLevel.isRetrieveTriggerInformation())
-        {
-          retrieverExtra.retrieveTriggerInformation();
-        }
-        return null;
-      });
-      stopWatch.time("retrieveViewInformation", () -> {
-        if (infoLevel.isRetrieveViewInformation())
-        {
-          retrieverExtra.retrieveViewInformation();
-        }
-        return null;
-      });
-      stopWatch.time("retrieveTableDefinitions", () -> {
-        if (infoLevel.isRetrieveTableDefinitionsInformation())
-        {
-          retrieverExtra.retrieveTableDefinitions();
-        }
-        return null;
-      });
-      stopWatch.time("retrieveIndexInformation", () -> {
-        if (infoLevel.isRetrieveIndexInformation())
-        {
-          retrieverExtra.retrieveIndexInformation();
-          if (infoLevel.isRetrieveIndexColumnInformation())
-          {
-            retrieverExtra.retrieveIndexColumnInformation();
+      stopWatch.time("retrieveTriggerInformation", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveTriggerInformation()) {
+            retrieverExtra.retrieveTriggerInformation();
           }
+          return null;
         }
-        return null;
+      });
+      stopWatch.time("retrieveViewInformation", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveViewInformation()) {
+            retrieverExtra.retrieveViewInformation();
+          }
+          return null;
+        }
+      });
+      stopWatch.time("retrieveTableDefinitions",
+              new Callable<Object>() {
+                @Override
+                public Object call() throws Exception {
+                  if (infoLevel.isRetrieveTableDefinitionsInformation()) {
+                    retrieverExtra.retrieveTableDefinitions();
+                  }
+                  return null;
+                }
+              });
+      stopWatch.time("retrieveIndexInformation",
+              new Callable<Object>() {
+                @Override
+                public Object call() throws Exception {
+                  if (infoLevel.isRetrieveIndexInformation()) {
+                    retrieverExtra.retrieveIndexInformation();
+                    if (infoLevel.isRetrieveIndexColumnInformation()) {
+                      retrieverExtra.retrieveIndexColumnInformation();
+                    }
+                  }
+                  return null;
+                }
+              });
+
+      stopWatch.time("retrieveAdditionalTableAttributes",
+              new Callable<Object>() {
+                @Override
+                public Object call() throws Exception {
+                  if (infoLevel.isRetrieveAdditionalTableAttributes()) {
+                    retrieverExtra.retrieveAdditionalTableAttributes();
+                  }
+                  return null;
+                }
+              });
+      stopWatch.time("retrieveTablePrivileges", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveTablePrivileges()) {
+            retrieverExtra.retrieveTablePrivileges();
+          }
+          return null;
+        }
       });
 
-      stopWatch.time("retrieveAdditionalTableAttributes", () -> {
-        if (infoLevel.isRetrieveAdditionalTableAttributes())
-        {
-          retrieverExtra.retrieveAdditionalTableAttributes();
+      stopWatch.time("retrieveAdditionalColumnAttributes", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveAdditionalColumnAttributes()) {
+            retrieverExtra.retrieveAdditionalColumnAttributes();
+          }
+          return null;
         }
-        return null;
       });
-      stopWatch.time("retrieveTablePrivileges", () -> {
-        if (infoLevel.isRetrieveTablePrivileges())
-        {
-          retrieverExtra.retrieveTablePrivileges();
+      stopWatch.time("retrieveTableColumnPrivileges", new Callable<Object>() {
+        @Override
+        public Object call() throws Exception {
+          if (infoLevel.isRetrieveTableColumnPrivileges()) {
+            retrieverExtra.retrieveTableColumnPrivileges();
+          }
+          return null;
         }
-        return null;
-      });
-
-      stopWatch.time("retrieveAdditionalColumnAttributes", () -> {
-        if (infoLevel.isRetrieveAdditionalColumnAttributes())
-        {
-          retrieverExtra.retrieveAdditionalColumnAttributes();
-        }
-        return null;
-      });
-      stopWatch.time("retrieveTableColumnPrivileges", () -> {
-        if (infoLevel.isRetrieveTableColumnPrivileges())
-        {
-          retrieverExtra.retrieveTableColumnPrivileges();
-        }
-        return null;
       });
 
       LOGGER.log(Level.INFO, stopWatch.stringify());

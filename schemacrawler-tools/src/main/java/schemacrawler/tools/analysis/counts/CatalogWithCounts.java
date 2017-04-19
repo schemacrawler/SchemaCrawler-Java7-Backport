@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.logging.Level;
 
 import schemacrawler.crawl.TablesReducer;
@@ -126,7 +126,7 @@ public final class CatalogWithCounts
   @Override
   public final <T> Optional<T> lookupAttribute(final String name)
   {
-    return Optional.of(getAttribute(name));
+    return Optional.of(this.<T>getAttribute(name));
   }
 
 }

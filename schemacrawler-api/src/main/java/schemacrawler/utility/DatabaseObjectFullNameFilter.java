@@ -32,7 +32,7 @@ import static sf.util.Utility.isBlank;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.Schema;

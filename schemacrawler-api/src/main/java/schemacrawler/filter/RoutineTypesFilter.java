@@ -29,7 +29,7 @@ package schemacrawler.filter;
 
 
 import java.util.Collection;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.Routine;
 import schemacrawler.schema.RoutineType;

@@ -30,7 +30,7 @@ package schemacrawler.schema;
 
 import java.util.Collection;
 
-@FunctionalInterface
+@com.annimon.stream.function.FunctionalInterface
 public interface Reducer<N extends NamedObject>
 {
 

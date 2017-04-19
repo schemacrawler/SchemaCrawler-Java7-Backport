@@ -34,7 +34,7 @@ import static sf.util.Utility.isBlank;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.AttributedObject;
 import schemacrawler.schema.DescribedObject;
@@ -135,7 +135,7 @@ abstract class AbstractNamedObjectWithAttributes
   @Override
   public final <T> Optional<T> lookupAttribute(final String name)
   {
-    return Optional.of(getAttribute(name));
+    return Optional.of(this.<T>getAttribute(name));
   }
 
   /**

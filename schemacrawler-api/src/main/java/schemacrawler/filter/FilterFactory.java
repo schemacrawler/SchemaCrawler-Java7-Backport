@@ -28,31 +28,32 @@ http://www.gnu.org/licenses/
 package schemacrawler.filter;
 
 
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.Routine;
 import schemacrawler.schema.Table;
 import schemacrawler.schemacrawler.SchemaCrawlerOptions;
+
+import static com.annimon.stream.function.Predicate.Util.and;
 
 public final class FilterFactory
 {
 
   public static Predicate<Routine> routineFilter(final SchemaCrawlerOptions options)
   {
-    final Predicate<Routine> routineFilter = new RoutineTypesFilter(options)
-      .and(new DatabaseObjectFilter<Routine>(options,
-                                             options.getRoutineInclusionRule()))
-      .and(new RoutineGrepFilter(options));
-
+    final Predicate<Routine> routineFilter = and(and(
+            new RoutineTypesFilter(options),
+            new DatabaseObjectFilter<Routine>(options, options.getRoutineInclusionRule())),
+            new RoutineGrepFilter(options));
     return routineFilter;
   }
 
   public static Predicate<Table> tableFilter(final SchemaCrawlerOptions options)
   {
-    final Predicate<Table> tableFilter = new TableTypesFilter(options)
-      .and(new DatabaseObjectFilter<Table>(options,
-                                           options.getTableInclusionRule()))
-      .and(new TableGrepFilter(options));
+    final Predicate<Table> tableFilter = and(and(
+            new TableTypesFilter(options),
+            new DatabaseObjectFilter<Table>(options, options.getTableInclusionRule())),
+            new TableGrepFilter(options));
 
     return tableFilter;
   }

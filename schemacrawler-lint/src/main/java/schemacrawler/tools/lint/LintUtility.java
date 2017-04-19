@@ -33,6 +33,7 @@ import static java.nio.file.Files.isRegularFile;
 import static java.nio.file.Files.newBufferedReader;
 import static sf.util.Utility.isBlank;
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -92,7 +93,7 @@ public final class LintUtility
         if (isRegularFile(linterConfigsFilePath)
             && isReadable(linterConfigsFilePath))
         {
-          linterConfigs.parse(newBufferedReader(linterConfigsFilePath));
+          linterConfigs.parse(newBufferedReader(linterConfigsFilePath, StandardCharsets.UTF_8));
         }
         else
         {

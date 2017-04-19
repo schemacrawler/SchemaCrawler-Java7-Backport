@@ -31,7 +31,7 @@ package schemacrawler.schema;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 /**
  * Represents a table in the database.

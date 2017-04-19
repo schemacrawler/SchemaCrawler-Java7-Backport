@@ -35,7 +35,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.Set;
 
 import schemacrawler.schema.Column;
@@ -321,7 +321,7 @@ class MutableTable
   {
     if (primaryKey != null && primaryKey.getName().equals(name))
     {
-      return Optional.of(primaryKey);
+      return Optional.<MutableIndex>of(primaryKey);
     }
     else
     {
