@@ -34,8 +34,8 @@
     <name>Sualeh Fatehi</name>
   </organization>
   <scm>
-    <url>https://github.com/sualeh/SchemaCrawler</url>
-    <connection>scm:git:git://github.com/sualeh/SchemaCrawler.git</connection>
+    <url>https://github.com/sualeh/SchemaCrawler-Java7-Backport</url>
+    <connection>scm:git:git://github.com/sualeh/SchemaCrawler-Java7-Backport.git</connection>
   </scm>
   <distributionManagement>
     <snapshotRepository>
