@@ -173,6 +173,7 @@ public class LinterConfigsDispatchTest
       final Path tempFile = IOUtility.createTempFilePath("lintertest", "log");
       write(tempFile,
             Arrays.asList(sysErrLog.getLogWithNormalizedLineSeparator()),
+              StandardCharsets.UTF_8,
             CREATE_NEW,
             WRITE);
       sysErrLog.clearLog();
