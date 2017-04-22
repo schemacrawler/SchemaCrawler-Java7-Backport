@@ -29,6 +29,9 @@ package schemacrawler.test;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.nio.file.Files.write;
+import static java.nio.file.StandardOpenOption.CREATE_NEW;
+import static java.nio.file.StandardOpenOption.WRITE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -40,7 +43,6 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,6 +59,7 @@ import schemacrawler.tools.lint.LintSeverity;
 import schemacrawler.tools.lint.LinterConfig;
 import schemacrawler.tools.lint.LinterConfigs;
 import schemacrawler.tools.options.TextOutputFormat;
+import sf.util.IOUtility;
 
 public class LinterConfigsDispatchTest
   extends BaseLintExecutableTest
@@ -167,11 +170,11 @@ public class LinterConfigsDispatchTest
   {
     try
     {
-      final Path tempFile = Files.createTempFile("sc", ".log");
-      Files.write(tempFile,
-                  Arrays.asList(sysErrLog.getLogWithNormalizedLineSeparator()),
-                  StandardCharsets.UTF_8,
-                  StandardOpenOption.WRITE);
+      final Path tempFile = IOUtility.createTempFilePath("lintertest", "log");
+      write(tempFile,
+            Arrays.asList(sysErrLog.getLogWithNormalizedLineSeparator()),
+            CREATE_NEW,
+            WRITE);
       sysErrLog.clearLog();
 
       final List<String> failures = compareOutput(testName.currentMethodName()

@@ -29,7 +29,8 @@ http://www.gnu.org/licenses/
 package schemacrawler.tools.integration.graph;
 
 
-import java.nio.file.Files;
+import static sf.util.IOUtility.createTempFilePath;
+
 import java.nio.file.Path;
 import java.sql.Connection;
 
@@ -88,8 +89,7 @@ public final class GraphExecutable
     outputOptions.setOutputFormatValue(graphOutputFormat.getFormat());
 
     // Create dot file
-    final Path dotFile = Files.createTempFile("schemacrawler.", ".dot")
-      .normalize().toAbsolutePath();
+    final Path dotFile = createTempFilePath("schemacrawler.", "dot");
     final OutputOptions dotFileOutputOptions;
     if (graphOutputFormat == GraphOutputFormat.scdot)
     {
@@ -99,6 +99,7 @@ public final class GraphExecutable
     {
       dotFileOutputOptions = new OutputOptions(GraphOutputFormat.dot, dotFile);
     }
+
     final SchemaTraversalHandler formatter = getSchemaTraversalHandler(dotFileOutputOptions);
 
     final SchemaTraverser traverser = new SchemaTraverser();
@@ -111,14 +112,17 @@ public final class GraphExecutable
 
     traverser.traverse();
 
-    // Create graph image
-    final GraphOptions graphOptions = getGraphOptions();
-    final GraphProcessExecutor graphProcessExecutor = new GraphProcessExecutor(dotFile,
-                                                                               outputOptions
-                                                                                 .getOutputFile(),
-                                                                               graphOptions,
-                                                                               graphOutputFormat);
-    graphProcessExecutor.call();
+    if (graphOutputFormat != GraphOutputFormat.scdot)
+    {
+      // Create graph image
+      final GraphOptions graphOptions = getGraphOptions();
+      final GraphProcessExecutor graphProcessExecutor = new GraphProcessExecutor(dotFile,
+                                                                                 outputOptions
+                                                                                   .getOutputFile(),
+                                                                                 graphOptions,
+                                                                                 graphOutputFormat);
+      graphProcessExecutor.call();
+    }
   }
 
   public final GraphOptions getGraphOptions()

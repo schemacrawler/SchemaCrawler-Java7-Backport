@@ -29,6 +29,14 @@ package sf.util;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.nio.file.Files.createTempFile;
+import static java.nio.file.Files.delete;
+import static java.nio.file.Files.exists;
+import static java.nio.file.Files.isDirectory;
+import static java.nio.file.Files.isReadable;
+import static java.nio.file.Files.isRegularFile;
+import static java.nio.file.Files.isWritable;
+import static java.nio.file.Files.size;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -100,6 +108,18 @@ public final class IOUtility
     }
   }
 
+  public static Path createTempFilePath(final String stem,
+                                        final String extension)
+    throws IOException
+  {
+    final Path tempFilePath = createTempFile("schemacrawler." + stem + ".",
+                                             "." + extension).normalize()
+                                               .toAbsolutePath();
+    delete(tempFilePath);
+    tempFilePath.toFile().deleteOnExit();
+    return tempFilePath;
+  }
+
   public static String getFileExtension(final Path file)
   {
     if (file == null)
@@ -127,6 +147,65 @@ public final class IOUtility
       ext = "";
     }
     return ext;
+  }
+
+  /**
+   * Checks if an input file can be read. The file must contain some
+   * data.
+   *
+   * @param file
+   *        Input file to read
+   * @return True if the file can be read, false otherwise.
+   */
+  public static boolean isFileReadable(final Path file)
+  {
+    if (file == null)
+    {
+      return false;
+    }
+    if (!isReadable(file) || !isRegularFile(file))
+    {
+      return false;
+    }
+    try
+    {
+      if (size(file) == 0)
+      {
+        return false;
+      }
+    }
+    catch (final IOException e)
+    {
+      // Not a critical check, so ignore exception
+    }
+    return true;
+  }
+
+  /**
+   * Checks if an output file can be written. The file does not need to
+   * exist.
+   *
+   * @param file
+   *        Output file to write
+   * @return True if the file can be written, false otherwise.
+   */
+  public static boolean isFileWritable(final Path file)
+  {
+    if (file == null)
+    {
+      return false;
+    }
+    if (isDirectory(file))
+    {
+      return false;
+    }
+    final Path parentPath = file.getParent();
+    if (parentPath == null || !exists(parentPath) || !isDirectory(parentPath)
+        || !isWritable(parentPath))
+    {
+      return false;
+    }
+    return true;
   }
 
   public static String readFully(final InputStream stream)
