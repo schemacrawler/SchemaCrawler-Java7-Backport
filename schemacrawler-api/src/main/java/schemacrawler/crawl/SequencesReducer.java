@@ -41,8 +41,8 @@ public final class SequencesReducer
   {
     super(options == null? new IncludeAllFilter<Sequence>()
                          : new DatabaseObjectFilter<Sequence>(options,
-                                                      options
-                                                        .getSequenceInclusionRule()));
+                                                              options
+                                                                .getSequenceInclusionRule()));
   }
 
 }

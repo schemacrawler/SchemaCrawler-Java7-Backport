@@ -41,8 +41,8 @@ public final class SynonymsReducer
   {
     super(options == null? new IncludeAllFilter<Synonym>()
                          : new DatabaseObjectFilter<Synonym>(options,
-                                                      options
-                                                        .getSynonymInclusionRule()));
+                                                             options
+                                                               .getSynonymInclusionRule()));
   }
 
 }
