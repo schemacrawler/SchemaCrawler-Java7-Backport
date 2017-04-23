@@ -29,18 +29,17 @@ http://www.gnu.org/licenses/
 package schemacrawler.tools.options;
 
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Objects.requireNonNull;
 import static sf.util.Utility.isBlank;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.math.BigInteger;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.SecureRandom;
+import java.util.UUID;
 
 import schemacrawler.schemacrawler.Config;
 import schemacrawler.schemacrawler.Options;
@@ -72,12 +71,10 @@ public class OutputOptions
   private static final String SC_INPUT_ENCODING = "schemacrawler.encoding.input";
   private static final String SC_OUTPUT_ENCODING = "schemacrawler.encoding.output";
 
-  private static final SecureRandom random = new SecureRandom();
   private OutputResource outputResource;
   private InputResource inputResource;
   private String outputFormatValue;
   private Charset inputEncodingCharset;
-
   private Charset outputEncodingCharset;
 
   /**
@@ -100,10 +97,10 @@ public class OutputOptions
       configProperties = config;
     }
 
-    setInputEncoding(configProperties
-      .getStringValue(SC_INPUT_ENCODING, StandardCharsets.UTF_8.name()));
-    setOutputEncoding(configProperties
-      .getStringValue(SC_OUTPUT_ENCODING, StandardCharsets.UTF_8.name()));
+    setInputEncoding(configProperties.getStringValue(SC_INPUT_ENCODING,
+                                                     UTF_8.name()));
+    setOutputEncoding(configProperties.getStringValue(SC_OUTPUT_ENCODING,
+                                                      UTF_8.name()));
   }
 
   /**
@@ -204,7 +201,7 @@ public class OutputOptions
   {
     if (inputEncodingCharset == null)
     {
-      return StandardCharsets.UTF_8;
+      return UTF_8;
     }
     else
     {
@@ -219,7 +216,7 @@ public class OutputOptions
   {
     if (outputEncodingCharset == null)
     {
-      return StandardCharsets.UTF_8;
+      return UTF_8;
     }
     else
     {
@@ -253,7 +250,8 @@ public class OutputOptions
       }
       // Create output file path
       outputFile = Paths
-        .get(".", String.format("sc.%s.%s", nextRandomString(), extension))
+        .get(".",
+             String.format("schemacrawler-%s.%s", UUID.randomUUID(), extension))
         .normalize().toAbsolutePath();
     }
     return outputFile;
@@ -355,7 +353,7 @@ public class OutputOptions
   {
     if (inputCharset == null)
     {
-      inputEncodingCharset = StandardCharsets.UTF_8;
+      inputEncodingCharset = UTF_8;
     }
     else
     {
@@ -374,7 +372,7 @@ public class OutputOptions
   {
     if (isBlank(inputEncoding))
     {
-      inputEncodingCharset = StandardCharsets.UTF_8;
+      inputEncodingCharset = UTF_8;
     }
     else
     {
@@ -433,7 +431,7 @@ public class OutputOptions
   {
     if (outputCharset == null)
     {
-      outputEncodingCharset = StandardCharsets.UTF_8;
+      outputEncodingCharset = UTF_8;
     }
     else
     {
@@ -451,7 +449,7 @@ public class OutputOptions
   {
     if (isBlank(outputEncoding))
     {
-      outputEncodingCharset = StandardCharsets.UTF_8;
+      outputEncodingCharset = UTF_8;
     }
     else
     {
@@ -494,12 +492,6 @@ public class OutputOptions
   public String toString()
   {
     return ObjectToString.toString(this);
-  }
-
-  private String nextRandomString()
-  {
-    final int length = 8;
-    return new BigInteger(length * 5, random).toString(32);
   }
 
   /**

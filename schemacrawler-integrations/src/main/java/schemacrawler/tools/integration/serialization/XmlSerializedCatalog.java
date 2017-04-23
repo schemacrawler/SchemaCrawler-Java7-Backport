@@ -33,14 +33,14 @@ import static java.util.Objects.requireNonNull;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.time.LocalDateTime;
+import org.threeten.bp.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.Set;
 
 import com.thoughtworks.xstream.XStream;
@@ -240,7 +240,7 @@ public final class XmlSerializedCatalog
   @Override
   public final <T> Optional<T> lookupAttribute(final String name)
   {
-    return Optional.of(getAttribute(name));
+    return Optional.of(this.<T>getAttribute(name));
   }
 
   /**

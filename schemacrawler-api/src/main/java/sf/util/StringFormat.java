@@ -31,7 +31,7 @@ package sf.util;
 import static sf.util.Utility.isBlank;
 
 import java.util.Formatter;
-import java.util.function.Supplier;
+import com.annimon.stream.function.Supplier;
 
 public final class StringFormat
   implements Supplier<String>

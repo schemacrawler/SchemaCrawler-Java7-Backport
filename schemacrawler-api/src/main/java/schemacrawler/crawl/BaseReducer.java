@@ -32,7 +32,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.NamedObject;
 import schemacrawler.schema.Reducer;

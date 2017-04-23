@@ -34,7 +34,7 @@ import static sf.util.Utility.isBlank;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 public final class SchemaReference
   implements Schema
@@ -249,7 +249,7 @@ public final class SchemaReference
   @Override
   public final <T> Optional<T> lookupAttribute(final String name)
   {
-    return Optional.of(getAttribute(name));
+    return Optional.of(this.<T>getAttribute(name));
   }
 
   /**

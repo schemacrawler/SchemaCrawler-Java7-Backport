@@ -31,7 +31,7 @@ package schemacrawler.crawl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.Column;
 import schemacrawler.schema.Privilege;

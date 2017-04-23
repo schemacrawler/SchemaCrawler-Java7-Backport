@@ -32,7 +32,7 @@ import static java.util.Objects.requireNonNull;
 import static sf.util.DatabaseUtility.checkConnection;
 
 import java.sql.Connection;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.logging.Level;
 
 import schemacrawler.schema.Catalog;
@@ -94,7 +94,7 @@ public final class LintedCatalog
   @Override
   public final <T> Optional<T> lookupAttribute(final String name)
   {
-    return Optional.of(getAttribute(name));
+    return Optional.of(this.<T>getAttribute(name));
   }
 
 }

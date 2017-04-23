@@ -30,7 +30,7 @@ package schemacrawler.schemacrawler;
 
 
 import java.io.Serializable;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 /**
  * Specifies inclusion and exclusion patterns that can be applied to the
@@ -42,7 +42,7 @@ import java.util.function.Predicate;
  *
  * @author Sualeh Fatehi
  */
-@FunctionalInterface
+@com.annimon.stream.function.FunctionalInterface
 public interface InclusionRule
   extends Serializable, Predicate<String>
 {

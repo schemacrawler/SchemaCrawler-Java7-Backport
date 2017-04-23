@@ -32,7 +32,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.ColumnDataType;

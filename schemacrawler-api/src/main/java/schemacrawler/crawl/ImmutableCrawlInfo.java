@@ -31,8 +31,8 @@ package schemacrawler.crawl;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
 
 import schemacrawler.schema.CrawlInfo;
 import schemacrawler.schema.DatabaseInfo;

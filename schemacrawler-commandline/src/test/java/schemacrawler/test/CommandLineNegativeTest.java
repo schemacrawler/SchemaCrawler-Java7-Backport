@@ -28,12 +28,11 @@ http://www.gnu.org/licenses/
 package schemacrawler.test;
 
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.newBufferedWriter;
-import static schemacrawler.test.utility.TestUtility.createTempFile;
 import static schemacrawler.test.utility.TestUtility.flattenCommandlineArgs;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +48,7 @@ import schemacrawler.schemacrawler.Config;
 import schemacrawler.test.utility.BaseDatabaseTest;
 import schemacrawler.test.utility.TestName;
 import schemacrawler.test.utility.TestWriter;
+import sf.util.IOUtility;
 
 public class CommandLineNegativeTest
   extends BaseDatabaseTest
@@ -77,11 +77,10 @@ public class CommandLineNegativeTest
     throws IOException
   {
     final String prefix = "SchemaCrawler.TestCommandLineConfig";
-    final Path configFile = createTempFile(prefix, "properties");
+    final Path configFile = IOUtility.createTempFilePath(prefix, "properties");
     final Properties configProperties = new Properties();
     configProperties.putAll(config);
-    configProperties
-      .store(newBufferedWriter(configFile, StandardCharsets.UTF_8), prefix);
+    configProperties.store(newBufferedWriter(configFile, UTF_8), prefix);
     return configFile;
   }
 

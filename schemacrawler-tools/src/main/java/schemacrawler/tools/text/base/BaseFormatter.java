@@ -34,8 +34,8 @@ import static sf.util.Utility.isLowerCase;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
+import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.temporal.TemporalAccessor;
 
 import schemacrawler.schema.Column;
 import schemacrawler.schema.DatabaseObject;

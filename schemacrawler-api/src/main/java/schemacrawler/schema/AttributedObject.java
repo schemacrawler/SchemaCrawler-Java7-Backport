@@ -30,7 +30,7 @@ package schemacrawler.schema;
 
 
 import java.util.Map;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 public interface AttributedObject
 {

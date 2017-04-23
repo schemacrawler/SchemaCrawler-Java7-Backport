@@ -33,7 +33,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.ForeignKey;
 import schemacrawler.schema.ForeignKeyColumnReference;

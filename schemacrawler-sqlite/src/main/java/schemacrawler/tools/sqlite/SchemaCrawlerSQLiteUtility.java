@@ -28,13 +28,11 @@ http://www.gnu.org/licenses/
 package schemacrawler.tools.sqlite;
 
 
-import static java.nio.file.Files.exists;
-import static java.nio.file.Files.isReadable;
-import static java.nio.file.Files.isRegularFile;
 import static java.util.Objects.requireNonNull;
 import static sf.util.DatabaseUtility.checkConnection;
+import static sf.util.IOUtility.createTempFilePath;
+import static sf.util.IOUtility.isFileReadable;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -57,9 +55,9 @@ public class SchemaCrawlerSQLiteUtility
     throws SchemaCrawlerException
   {
     requireNonNull(dbFile, "No SQLite database file provided");
-    if (!exists(dbFile) || !isRegularFile(dbFile) || !isReadable(dbFile))
+    if (!isFileReadable(dbFile))
     {
-      throw new SchemaCrawlerException("Cannot read " + dbFile);
+      throw new SchemaCrawlerException("Cannot read, " + dbFile);
     }
 
     final Config config = new Config();
@@ -100,8 +98,7 @@ public class SchemaCrawlerSQLiteUtility
     options.setSchemaInfoLevel(SchemaInfoLevelBuilder.standard());
     options.setRoutineInclusionRule(new ExcludeAll());
 
-    final Path diagramFile = Files.createTempFile("schemacrawler",
-                                                  "." + extension);
+    final Path diagramFile = createTempFilePath("schemacrawler", extension);
     final OutputOptions outputOptions = new OutputOptions(extension,
                                                           diagramFile);
 

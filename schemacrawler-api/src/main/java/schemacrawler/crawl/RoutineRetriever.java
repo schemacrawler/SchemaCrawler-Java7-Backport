@@ -35,7 +35,7 @@ import static sf.util.Utility.isBlank;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.logging.Level;
 
 import schemacrawler.filter.InclusionRuleFilter;

@@ -32,7 +32,7 @@ package schemacrawler.crawl;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.logging.Level;
 
 import schemacrawler.schema.RoutineBodyType;

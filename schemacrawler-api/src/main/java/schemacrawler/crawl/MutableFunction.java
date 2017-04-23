@@ -33,7 +33,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.schema.Function;
 import schemacrawler.schema.FunctionColumn;

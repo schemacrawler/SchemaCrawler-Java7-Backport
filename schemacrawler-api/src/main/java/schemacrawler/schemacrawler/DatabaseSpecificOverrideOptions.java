@@ -30,7 +30,7 @@ package schemacrawler.schemacrawler;
 
 import static sf.util.Utility.isBlank;
 
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 import schemacrawler.crawl.MetadataRetrievalStrategy;
 

@@ -28,17 +28,16 @@ http://www.gnu.org/licenses/
 package schemacrawler.integration.test;
 
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.size;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
-import static schemacrawler.test.utility.TestUtility.createTempFile;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
 import org.junit.Before;
@@ -53,6 +52,7 @@ import schemacrawler.test.utility.BaseDatabaseTest;
 import schemacrawler.tools.integration.serialization.XmlSerializedCatalog;
 import schemacrawler.tools.iosource.CompressedFileInputResource;
 import schemacrawler.tools.iosource.CompressedFileOutputResource;
+import sf.util.IOUtility;
 
 public class LoadSnapshotTest
   extends BaseDatabaseTest
@@ -67,8 +67,7 @@ public class LoadSnapshotTest
   {
     final CompressedFileInputResource inputResource = new CompressedFileInputResource(serializedDatabaseFile,
                                                                                       SCHEMACRAWLER_DATA);
-    final Reader snapshotReader = inputResource
-      .openNewInputReader(StandardCharsets.UTF_8);
+    final Reader snapshotReader = inputResource.openNewInputReader(UTF_8);
     final XmlSerializedCatalog catalog = new XmlSerializedCatalog(snapshotReader);
 
     final Schema schema = catalog.lookupSchema("PUBLIC.BOOKS").orElse(null);
@@ -96,12 +95,13 @@ public class LoadSnapshotTest
                  6,
                  catalog.getTables(schema).size());
 
-    serializedDatabaseFile = createTempFile("schemacrawler", "ser");
+    serializedDatabaseFile = IOUtility.createTempFilePath("schemacrawler",
+                                                          "ser");
 
     final XmlSerializedCatalog xmlDatabase = new XmlSerializedCatalog(catalog);
     final Writer writer = new CompressedFileOutputResource(serializedDatabaseFile,
                                                            SCHEMACRAWLER_DATA)
-                                                             .openNewOutputWriter(StandardCharsets.UTF_8,
+                                                             .openNewOutputWriter(UTF_8,
                                                                                   false);
     xmlDatabase.save(writer);
     writer.close();

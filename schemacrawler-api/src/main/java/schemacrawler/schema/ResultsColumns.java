@@ -30,7 +30,7 @@ package schemacrawler.schema;
 
 
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 /**
  * Represents a result set, a result of a query.

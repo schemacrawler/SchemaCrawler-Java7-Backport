@@ -33,7 +33,7 @@ import static sf.util.PropertiesUtility.loadProperties;
 import static sf.util.Utility.isBlank;
 
 import java.nio.file.Paths;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 import java.util.Properties;
 
 import schemacrawler.schema.DatabaseObject;

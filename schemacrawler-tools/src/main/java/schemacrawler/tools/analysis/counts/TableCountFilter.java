@@ -30,7 +30,7 @@ package schemacrawler.tools.analysis.counts;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 
 import schemacrawler.schema.Table;
 import schemacrawler.schemacrawler.SchemaCrawlerOptions;

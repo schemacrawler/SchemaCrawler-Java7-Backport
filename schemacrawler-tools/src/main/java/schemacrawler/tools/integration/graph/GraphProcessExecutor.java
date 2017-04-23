@@ -28,19 +28,20 @@ http://www.gnu.org/licenses/
 package schemacrawler.tools.integration.graph;
 
 
-import static java.nio.file.Files.exists;
-import static java.nio.file.Files.isDirectory;
-import static java.nio.file.Files.isReadable;
-import static java.nio.file.Files.isRegularFile;
 import static java.nio.file.Files.move;
 import static java.util.Objects.requireNonNull;
+import static sf.util.IOUtility.isFileReadable;
+import static sf.util.IOUtility.isFileWritable;
 import static sf.util.IOUtility.readResourceFully;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
+import com.annimon.stream.function.Supplier;
 import java.util.logging.Level;
 
 import schemacrawler.schemacrawler.SchemaCrawlerException;
@@ -70,24 +71,16 @@ public class GraphProcessExecutor
     requireNonNull(graphOptions, "No graph options provided");
     requireNonNull(graphOutputFormat, "No graph output format provided");
 
-    if (!(exists(dotFile) && isRegularFile(dotFile) && isReadable(dotFile)))
+    if (!isFileReadable(dotFile))
     {
       throw new IOException("Cannot read DOT file, " + dotFile);
     }
     this.dotFile = dotFile;
 
-    final Path outputDir = requireNonNull(outputFile.getParent(),
-                                          "Invalid output directory");
-    if (isDirectory(outputFile) || !exists(outputDir)
-        || !isDirectory(outputDir))
+    this.outputFile = outputFile.normalize().toAbsolutePath();
+    if (!isFileWritable(this.outputFile))
     {
-      throw new IOException("Cannot write graph file, " + dotFile);
-    }
-    this.outputFile = outputFile;
-
-    if (graphOutputFormat == GraphOutputFormat.scdot)
-    {
-      return;
+      throw new IOException("Cannot write output file, " + this.outputFile);
     }
 
     createDiagramCommand(dotFile, outputFile, graphOptions, graphOutputFormat);
@@ -101,13 +94,6 @@ public class GraphProcessExecutor
   public Integer call()
     throws Exception
   {
-    // For scdot, we may not need to run the process
-    final List<String> command = getCommand();
-    if (command == null || command.isEmpty())
-    {
-      return 0;
-    }
-
     final Integer exitCode = super.call();
     final boolean isProcessInError = exitCode == null || exitCode != 0;
 
@@ -158,7 +144,7 @@ public class GraphProcessExecutor
     final String message = String
       .format("%s%nGenerate your diagram manually, using:%n%s",
               readResourceFully("/dot.error.txt"),
-              String.join(" ", quoteCommandLine(command)));
+              Stream.of(quoteCommandLine(command)).collect(Collectors.joining(" ")));
 
     try
     {

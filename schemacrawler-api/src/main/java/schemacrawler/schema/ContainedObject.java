@@ -28,7 +28,7 @@ http://www.gnu.org/licenses/
 package schemacrawler.schema;
 
 
-@FunctionalInterface
+@com.annimon.stream.function.FunctionalInterface
 public interface ContainedObject<P>
 {
 

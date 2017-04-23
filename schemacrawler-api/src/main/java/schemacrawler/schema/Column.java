@@ -30,7 +30,7 @@ package schemacrawler.schema;
 
 
 import java.util.Collection;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 /**
  * Represents a column in a database table or routine.

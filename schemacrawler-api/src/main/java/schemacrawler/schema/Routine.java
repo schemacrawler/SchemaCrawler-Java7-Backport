@@ -29,7 +29,7 @@ package schemacrawler.schema;
 
 
 import java.util.List;
-import java.util.Optional;
+import com.annimon.stream.Optional;
 
 public interface Routine
   extends DatabaseObject, TypedObject<RoutineType>, DefinedObject

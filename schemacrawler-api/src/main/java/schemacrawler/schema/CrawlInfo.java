@@ -29,7 +29,7 @@ package schemacrawler.schema;
 
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import org.threeten.bp.LocalDateTime;
 
 public interface CrawlInfo
   extends Serializable

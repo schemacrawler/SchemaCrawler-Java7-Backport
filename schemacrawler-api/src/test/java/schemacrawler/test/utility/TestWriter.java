@@ -28,6 +28,7 @@ http://www.gnu.org/licenses/
 package schemacrawler.test.utility;
 
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.deleteIfExists;
 import static java.nio.file.Files.newBufferedWriter;
 import static java.nio.file.Files.newOutputStream;
@@ -38,7 +39,6 @@ import static java.nio.file.StandardOpenOption.WRITE;
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.fail;
 import static schemacrawler.test.utility.TestUtility.compareOutput;
-import static schemacrawler.test.utility.TestUtility.createTempFile;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -46,12 +46,13 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 import java.util.zip.GZIPOutputStream;
+
+import sf.util.IOUtility;
 
 public class TestWriter
   extends Writer
@@ -72,9 +73,10 @@ public class TestWriter
     throws IOException
   {
     this.outputformat = requireNonNull(outputformat);
-    tempFile = createTempFile("schemacrawler",
-                              outputformat.replaceAll("[/\\\\]", ""));
-    out = openOutputWriter(tempFile, StandardCharsets.UTF_8, isCompressed);
+    tempFile = IOUtility
+      .createTempFilePath("schemacrawler",
+                          outputformat.replaceAll("[/\\\\]", ""));
+    out = openOutputWriter(tempFile, UTF_8, isCompressed);
     this.isCompressed = isCompressed;
   }
 

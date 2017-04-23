@@ -28,7 +28,7 @@ http://www.gnu.org/licenses/
 package schemacrawler.filter;
 
 
-import java.util.function.Predicate;
+import com.annimon.stream.function.Predicate;
 import java.util.logging.Level;
 
 import schemacrawler.schema.Column;
@@ -63,8 +63,6 @@ class TableGrepFilter
    * column inclusion rule is found, and at least one column matches the
    * rule.
    *
-   * @param options
-   *        Options
    * @param table
    *        Table to check
    * @return Whether the column should be included

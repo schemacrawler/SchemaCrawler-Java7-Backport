@@ -28,12 +28,11 @@ http://www.gnu.org/licenses/
 package schemacrawler.test.utility;
 
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.Files.createDirectories;
 import static java.nio.file.Files.delete;
 import static java.nio.file.Files.deleteIfExists;
 import static java.nio.file.Files.exists;
-import static java.nio.file.Files.isReadable;
-import static java.nio.file.Files.isRegularFile;
 import static java.nio.file.Files.move;
 import static java.nio.file.Files.newBufferedReader;
 import static java.nio.file.Files.newInputStream;
@@ -46,6 +45,7 @@ import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 import static java.nio.file.StandardOpenOption.WRITE;
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertTrue;
+import static sf.util.IOUtility.isFileReadable;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -59,9 +59,6 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -87,6 +84,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
+import sf.util.IOUtility;
 
 public final class TestUtility
 {
@@ -162,9 +161,7 @@ public final class TestUtility
     requireNonNull(testOutputTempFile, "Output file is not defined");
     requireNonNull(outputFormat, "Output format is not defined");
 
-    if (!exists(testOutputTempFile)
-        || !isRegularFile(testOutputTempFile, LinkOption.NOFOLLOW_LINKS)
-        || !isReadable(testOutputTempFile) || size(testOutputTempFile) == 0)
+    if (!isFileReadable(testOutputTempFile))
     {
       return Collections
         .singletonList("Output file not created - " + testOutputTempFile);
@@ -174,7 +171,7 @@ public final class TestUtility
 
     final boolean contentEquals;
     final Reader referenceReader = readerForResource(referenceFile,
-                                                     StandardCharsets.UTF_8,
+                                                     UTF_8,
                                                      isCompressed);
     if (referenceReader == null)
 
@@ -236,19 +233,6 @@ public final class TestUtility
       requireNonNull(resourceStream, "Resource not found, " + resource);
       return writeToTempFile(resourceStream);
     }
-  }
-
-  public static Path createTempFile(final String stem,
-                                    final String outputFormatValue)
-    throws IOException
-  {
-    final Path testOutputTempFilePath = Files
-      .createTempFile(String.format("schemacrawler.%s.", stem),
-                      String.format(".%s", outputFormatValue))
-      .normalize().toAbsolutePath();
-    delete(testOutputTempFilePath);
-    testOutputTempFilePath.toFile().deleteOnExit();
-    return testOutputTempFilePath;
   }
 
   public static String[] flattenCommandlineArgs(final Map<String, String> argsMap)
@@ -439,12 +423,11 @@ public final class TestUtility
       inputStream.getNextEntry();
 
       bufferedReader = new BufferedReader(new InputStreamReader(inputStream,
-                                                                StandardCharsets.UTF_8));
+                                                                UTF_8));
     }
     else
     {
-      bufferedReader = newBufferedReader(testOutputTempFile,
-                                         StandardCharsets.UTF_8);
+      bufferedReader = newBufferedReader(testOutputTempFile, UTF_8);
     }
     return bufferedReader;
   }
@@ -462,7 +445,7 @@ public final class TestUtility
       final Charset charset;
       if (encoding == null)
       {
-        charset = StandardCharsets.UTF_8;
+        charset = UTF_8;
       }
       else
       {
@@ -564,7 +547,7 @@ public final class TestUtility
   private static Path writeToTempFile(final InputStream resourceStream)
     throws IOException, FileNotFoundException
   {
-    final Path tempFile = createTempFile("resource", "data").normalize()
+    final Path tempFile = IOUtility.createTempFilePath("resource", "data").normalize()
       .toAbsolutePath();
 
     try (final OutputStream tempFileStream = newOutputStream(tempFile,
