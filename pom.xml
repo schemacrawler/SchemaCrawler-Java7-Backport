@@ -60,7 +60,7 @@
     <module>schemacrawler</module>
 
     <module>schemacrawler-lint</module>
-		
+
     <module>schemacrawler-dbtest</module>
 
     <module>schemacrawler-db2</module>
@@ -72,7 +72,7 @@
     <module>schemacrawler-sqlserver</module>
     <module>schemacrawler-sybaseiq</module>
     <module>schemacrawler-offline</module>
-		
+
     <module>schemacrawler-distrib</module>
 
   </modules>
@@ -130,6 +130,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <skip.signing.artifacts>true</skip.signing.artifacts>
     <maven.javadoc.skip>false</maven.javadoc.skip>
+    <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
   </properties>
   <build>
     <pluginManagement>
@@ -179,11 +180,11 @@
           <artifactId>maven-gpg-plugin</artifactId>
           <version>1.6</version>
         </plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>2.5.5</version>
-				</plugin>				
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.5.5</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
@@ -237,7 +238,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>			
+      </plugin>
       <plugin>
         <inherited>true</inherited>
         <groupId>org.apache.maven.plugins</groupId>
