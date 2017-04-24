@@ -198,8 +198,8 @@
               <file>target/schemacrawler-${project.version}.jar</file>
               <generatePom>false</generatePom>
               <pomFile>src/assembly/schemacrawler.pom</pomFile>
-              <sources>target/schemacrawler-${project.version}-sources.jar</sources>
-              <javadoc>target/schemacrawler-${project.version}-javadoc.jar</javadoc>
+              <sources>target/schemacrawler-${project.version}-java7-sources.jar</sources>
+              <javadoc>target/schemacrawler-${project.version}-java7-javadoc.jar</javadoc>
               <repositoryId>sonatype-nexus</repositoryId>
               <repositoryLayout>default</repositoryLayout>
               <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
