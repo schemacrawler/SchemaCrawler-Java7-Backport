@@ -7,7 +7,7 @@
   <parent>
     <groupId>us.fatehi</groupId>
     <artifactId>schemacrawler-parent</artifactId>
-    <version>14.16.01</version>
+    <version>14.16.01-java7</version>
   </parent>
   <artifactId>schemacrawler-db2</artifactId>
   <packaging>jar</packaging>
@@ -17,7 +17,6 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler</artifactId>
       <version>${project.version}</version>
-      <classifier>java7</classifier>
     </dependency>
   </dependencies>
   <build>
@@ -26,7 +25,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <classifier>java7</classifier>
           <archive>
             <index>true</index>
             <manifest>

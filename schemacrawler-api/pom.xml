@@ -4,7 +4,7 @@
   <parent>
     <artifactId>schemacrawler-parent</artifactId>
     <groupId>us.fatehi</groupId>
-    <version>14.16.01</version>
+    <version>14.16.01-java7</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>schemacrawler-api</artifactId>
@@ -25,7 +25,6 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
       <version>${project.version}</version>
-			<classifier>java7</classifier>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -37,12 +36,9 @@
         <executions>
           <execution>
             <id>create-test-jar</id>
-            <configuration>
-              <classifier>java7-tests</classifier>
-            </configuration>						
             <goals>
               <goal>test-jar</goal>
-            </goals>			
+            </goals>
           </execution>
         </executions>
       </plugin>

@@ -7,7 +7,7 @@
   <parent>
     <groupId>us.fatehi</groupId>
     <artifactId>schemacrawler-parent</artifactId>
-    <version>14.16.01</version>
+    <version>14.16.01-java7</version>
   </parent>
   <artifactId>schemacrawler-lint</artifactId>
   <packaging>jar</packaging>
@@ -17,20 +17,17 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler</artifactId>
       <version>${project.version}</version>
-			<classifier>java7</classifier>
-    </dependency> 
+    </dependency>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
       <version>${project.version}</version>
-			<classifier>java7</classifier>
       <scope>test</scope>
-    </dependency>  
+    </dependency>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-api</artifactId>
       <version>${project.version}</version>
-			<classifier>java7-tests</classifier>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -38,10 +35,9 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-tools</artifactId>
       <version>${project.version}</version>
-			<classifier>java7-tests</classifier>
       <type>test-jar</type>
       <scope>test</scope>
-    </dependency> 
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -53,5 +49,5 @@
         </configuration>
       </plugin>
     </plugins>
-  </build>  
+  </build>
 </project>

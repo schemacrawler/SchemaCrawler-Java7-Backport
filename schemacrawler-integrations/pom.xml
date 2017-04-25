@@ -5,26 +5,24 @@
   <parent>
     <artifactId>schemacrawler-parent</artifactId>
     <groupId>us.fatehi</groupId>
-    <version>14.16.01</version>
+    <version>14.16.01-java7</version>
   </parent>
   <artifactId>schemacrawler-integrations</artifactId>
   <packaging>jar</packaging>
   <name>SchemaCrawler Integrations</name>
   <properties>
     <springframework.version>4.3.7.RELEASE</springframework.version>
-  </properties>  
+  </properties>
   <dependencies>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-commandline</artifactId>
       <version>${project.version}</version>
-			<classifier>java7</classifier>
     </dependency>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-api</artifactId>
       <version>${project.version}</version>
-			<classifier>java7-tests</classifier>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -32,14 +30,12 @@
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
       <version>${project.version}</version>
-			<classifier>java7</classifier>
       <scope>test</scope>
-    </dependency> 
+    </dependency>
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-tools</artifactId>
       <version>${project.version}</version>
-			<classifier>java7-tests</classifier>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>

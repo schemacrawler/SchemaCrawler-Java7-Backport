@@ -9,9 +9,9 @@
   <property name="schemacrawler.distribution.jar"
             value="${distribution.target}/schemacrawler-${SchemaCrawler.version}.jar" />
   <property name="schemacrawler.distribution.sources.jar"
-            value="${distribution.target}/schemacrawler-${SchemaCrawler.version}-java7-sources.jar" />
+            value="${distribution.target}/schemacrawler-${SchemaCrawler.version}-sources.jar" />
   <property name="schemacrawler.distribution.javadoc.jar"
-            value="${distribution.target}/schemacrawler-${SchemaCrawler.version}-java7-javadoc.jar" />
+            value="${distribution.target}/schemacrawler-${SchemaCrawler.version}-javadoc.jar" />
 
   <target name="make-distribution"
           depends="
@@ -69,15 +69,15 @@
         <attribute name="Copyright" value="Copyright (c) 2000-2017, Sualeh Fatehi" />
         <attribute name="Main-Class" value="schemacrawler.Main" />
       </manifest>
-      <zipfileset src="${SchemaCrawler.home}/schemacrawler-api/target/schemacrawler-api-${SchemaCrawler.version}-java7-sources.jar" />
-      <zipfileset src="${SchemaCrawler.home}/schemacrawler-commandline/target/schemacrawler-commandline-${SchemaCrawler.version}-java7-sources.jar" />
-      <zipfileset src="${SchemaCrawler.home}/schemacrawler-tools/target/schemacrawler-tools-${SchemaCrawler.version}-java7-sources.jar" />
-      <zipfileset src="${SchemaCrawler.home}/schemacrawler-integrations/target/schemacrawler-integrations-${SchemaCrawler.version}-java7-sources.jar" />
+      <zipfileset src="${SchemaCrawler.home}/schemacrawler-api/target/schemacrawler-api-${SchemaCrawler.version}-sources.jar" />
+      <zipfileset src="${SchemaCrawler.home}/schemacrawler-commandline/target/schemacrawler-commandline-${SchemaCrawler.version}-sources.jar" />
+      <zipfileset src="${SchemaCrawler.home}/schemacrawler-tools/target/schemacrawler-tools-${SchemaCrawler.version}-sources.jar" />
+      <zipfileset src="${SchemaCrawler.home}/schemacrawler-integrations/target/schemacrawler-integrations-${SchemaCrawler.version}-sources.jar" />
     </jar>
 
     <!-- Build javadoc jar -->
 
-    <copy file="${SchemaCrawler.home}/schemacrawler-api/target/schemacrawler-api-${SchemaCrawler.version}-java7-javadoc.jar"
+    <copy file="${SchemaCrawler.home}/schemacrawler-api/target/schemacrawler-api-${SchemaCrawler.version}-javadoc.jar"
           tofile="${schemacrawler.distribution.javadoc.jar}" />
     <jar destfile="${schemacrawler.distribution.javadoc.jar}"
       index="true"

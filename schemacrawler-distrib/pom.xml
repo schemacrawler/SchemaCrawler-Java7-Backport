@@ -5,7 +5,7 @@
   <parent>
     <groupId>us.fatehi</groupId>
     <artifactId>schemacrawler-parent</artifactId>
-    <version>14.16.01</version>
+    <version>14.16.01-java7</version>
   </parent>
   <artifactId>schemacrawler-distrib</artifactId>
   <packaging>pom</packaging>
@@ -32,7 +32,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-lint</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -40,7 +39,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-offline</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -48,7 +46,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-db2</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -56,7 +53,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-hsqldb</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -64,7 +60,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-oracle</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -72,7 +67,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-mysql</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -80,7 +74,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-db2</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -88,7 +81,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-postgresql</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -96,7 +88,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-sqlite</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -104,7 +95,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-sqlserver</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -112,7 +102,6 @@
                   <groupId>us.fatehi</groupId>
                   <artifactId>schemacrawler-sybaseiq</artifactId>
                   <version>${project.version}</version>
-                  <classifier>java7</classifier>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/_complete-distribution/lib</outputDirectory>
                 </artifactItem>
@@ -167,14 +156,13 @@
             <configuration>
               <file>target/schemacrawler-${project.version}.jar</file>
               <pomFile>src/assembly/schemacrawler.pom</pomFile>
-              <sources>target/schemacrawler-${project.version}-java7-sources.jar</sources>
-              <javadoc>target/schemacrawler-${project.version}-java7-javadoc.jar</javadoc>
+              <sources>target/schemacrawler-${project.version}-sources.jar</sources>
+              <javadoc>target/schemacrawler-${project.version}-javadoc.jar</javadoc>
               <repositoryLayout>default</repositoryLayout>
               <groupId>us.fatehi</groupId>
               <artifactId>schemacrawler</artifactId>
               <packaging>jar</packaging>
               <version>${project.version}</version>
-              <classifier>java7</classifier>
               <createChecksum>true</createChecksum>
             </configuration>
             <goals>
@@ -198,8 +186,8 @@
               <file>target/schemacrawler-${project.version}.jar</file>
               <generatePom>false</generatePom>
               <pomFile>src/assembly/schemacrawler.pom</pomFile>
-              <sources>target/schemacrawler-${project.version}-java7-sources.jar</sources>
-              <javadoc>target/schemacrawler-${project.version}-java7-javadoc.jar</javadoc>
+              <sources>target/schemacrawler-${project.version}-sources.jar</sources>
+              <javadoc>target/schemacrawler-${project.version}-javadoc.jar</javadoc>
               <repositoryId>sonatype-nexus</repositoryId>
               <repositoryLayout>default</repositoryLayout>
               <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
@@ -207,7 +195,6 @@
               <artifactId>schemacrawler</artifactId>
               <packaging>jar</packaging>
               <version>${project.version}</version>
-              <classifier>java7</classifier>
             </configuration>
             <goals>
               <goal>sign-and-deploy-file</goal>
