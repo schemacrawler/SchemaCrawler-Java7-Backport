@@ -27,3 +27,4 @@ buildNumber.properties
 /schemacrawler-examplecode/derby.log
 .idea/**
 **/*.iml
+.merge_file_*

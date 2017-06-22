@@ -7,7 +7,7 @@
   <groupId>us.fatehi</groupId>
   <artifactId>schemacrawler-parent</artifactId>
   <packaging>pom</packaging>
-  <version>14.16.01-java7</version>
+  <version>14.16.02-java7</version>
   <name>SchemaCrawler [Parent]</name>
   <description>Free database schema discovery and comprehension tool</description>
   <url>https://github.com/sualeh/SchemaCrawler</url>
@@ -70,7 +70,6 @@
     <module>schemacrawler-postgresql</module>
     <module>schemacrawler-sqlite</module>
     <module>schemacrawler-sqlserver</module>
-    <module>schemacrawler-sybaseiq</module>
     <module>schemacrawler-offline</module>
 
     <module>schemacrawler-distrib</module>
