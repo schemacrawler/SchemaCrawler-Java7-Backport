@@ -2,6 +2,15 @@
 .clover
 .svn
 .settings/com.atlassian.clover.eclipse.core.prefs
+schemacrawler-archetype-maven-project/
+schemacrawler-archetype-plugin-command/
+schemacrawler-archetype-plugin-dbconnector/
+schemacrawler-archetype-plugin-lint/
+schemacrawler-diff/
+schemacrawler-docker/
+schemacrawler-docs/
+schemacrawler-examplecode/
+schemacrawler-site/
 /schemacrawler-db2/*.jar
 /schemacrawler-distrib/*.bnd
 /schemacrawler-distrib/*.jar
