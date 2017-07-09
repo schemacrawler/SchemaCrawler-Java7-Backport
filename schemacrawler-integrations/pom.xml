@@ -5,7 +5,11 @@
   <parent>
     <artifactId>schemacrawler-parent</artifactId>
     <groupId>us.fatehi</groupId>
+<<<<<<< HEAD
     <version>14.16.03-java7</version>
+=======
+    <version>14.16.03</version>
+>>>>>>> ce51d734ed8dca7234f4351e7a2eff62aea4bcd3
     <relativePath>../schemacrawler-parent/pom.xml</relativePath>
   </parent>
   <artifactId>schemacrawler-integrations</artifactId>
@@ -85,13 +89,13 @@
     <dependency>
       <groupId>org.jruby</groupId>
       <artifactId>jruby</artifactId>
-      <version>9.1.10.0</version>
+      <version>9.1.12.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.python</groupId>
       <artifactId>jython-standalone</artifactId>
-      <version>2.7.0</version>
+      <version>2.7.1</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

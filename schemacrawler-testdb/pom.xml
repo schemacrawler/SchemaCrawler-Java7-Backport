@@ -5,7 +5,11 @@
   <parent>
     <groupId>us.fatehi</groupId>
     <artifactId>schemacrawler-parent</artifactId>
+<<<<<<< HEAD
     <version>14.16.03-java7</version>
+=======
+    <version>14.16.03</version>
+>>>>>>> ce51d734ed8dca7234f4351e7a2eff62aea4bcd3
     <relativePath>../schemacrawler-parent/pom.xml</relativePath>
   </parent>
   <artifactId>schemacrawler-testdb</artifactId>
@@ -26,7 +30,7 @@
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>1.4.195</version>
+      <version>1.4.196</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
