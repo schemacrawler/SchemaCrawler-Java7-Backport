@@ -7,7 +7,7 @@
   <groupId>us.fatehi</groupId>
   <artifactId>schemacrawler-parent</artifactId>
   <packaging>pom</packaging>
-  <version>14.16.02-java7</version>
+  <version>14.16.03-java7</version>
   <name>SchemaCrawler [Parent]</name>
   <description>Free database schema discovery and comprehension tool</description>
   <url>https://github.com/sualeh/SchemaCrawler</url>
@@ -130,6 +130,7 @@
     <skip.signing.artifacts>true</skip.signing.artifacts>
     <maven.javadoc.skip>false</maven.javadoc.skip>
     <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+    <javadoc.opts>-Xdoclint:none</javadoc.opts>
   </properties>
   <build>
     <pluginManagement>
