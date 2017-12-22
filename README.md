@@ -1,4 +1,4 @@
-# ![SchemaCrawler](https://github.com/sualeh/SchemaCrawler/blob/master/schemacrawler-site/src/site/resources/images/schemacrawler_logo.png?raw=true) SchemaCrawler - Java 7 Backport
+# ![SchemaCrawler](https://github.com/sualeh/SchemaCrawler/raw/master/schemacrawler-docs/logo/schemacrawler_logo.png?raw=true)  SchemaCrawler - Java 7 Backport
 
 > Please see the [SchemaCrawler website](http://www.schemacrawler.com/) for more details.
 
