@@ -2,314 +2,314 @@
 {
   "tables": [
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "AUTHORS",
-      "fullName": "PUBLIC.BOOKS.AUTHORS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
+      "indexes": [],
+      "columns": [],
       "remarks": "Contact details for book authors",
-      "primaryKey": {}
+      "triggers": [],
+      "fullName": "PUBLIC.BOOKS.AUTHORS",
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "AUTHORSLIST",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.BOOKS.AUTHORSLIST",
-      "type": "view",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "view"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "BOOKAUTHORS",
-      "fullName": "PUBLIC.BOOKS.BOOKAUTHORS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
+      "indexes": [],
+      "columns": [],
       "remarks": "Relationship between books and their authors, \nalong with the latest updated information",
-      "primaryKey": {}
+      "triggers": [],
+      "fullName": "PUBLIC.BOOKS.BOOKAUTHORS",
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "BOOKS",
-      "fullName": "PUBLIC.BOOKS.BOOKS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
+      "indexes": [],
+      "columns": [],
       "remarks": "Details for published books",
-      "primaryKey": {}
+      "triggers": [],
+      "fullName": "PUBLIC.BOOKS.BOOKS",
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
+      "primaryKey": {},
+      "name": "\"Global Counts\"",
       "indexes": [],
       "columns": [],
-      "name": "\"Global Counts\"",
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.BOOKS.\"Global Counts\"",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "PUBLISHERS",
-      "fullName": "PUBLIC.BOOKS.PUBLISHERS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
+      "indexes": [],
+      "columns": [],
       "remarks": "List of book publishers",
-      "primaryKey": {}
+      "triggers": [],
+      "fullName": "PUBLIC.BOOKS.PUBLISHERS",
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "EXTRA_PK",
-      "fullName": "PUBLIC.FOR_LINT.EXTRA_PK",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
+      "indexes": [],
+      "columns": [],
       "remarks": "Extra table with just a primary key",
-      "primaryKey": {}
+      "triggers": [],
+      "fullName": "PUBLIC.FOR_LINT.EXTRA_PK",
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "\"Global Counts\"",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.FOR_LINT.\"Global Counts\"",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "PUBLICATIONS",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.FOR_LINT.PUBLICATIONS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "PUBLICATIONWRITERS",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.FOR_LINT.PUBLICATIONWRITERS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "SELFREFERENCE",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.FOR_LINT.SELFREFERENCE",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "WRITERS",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.FOR_LINT.WRITERS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "ΠΊΝΑΚΑΒΆΣΗΣΔΕΔΟΜΈΝΩΝ",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.FOR_LINT.ΠΊΝΑΚΑΒΆΣΗΣΔΕΔΟΜΈΝΩΝ",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "REGIONS",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
       "fullName": "PUBLIC.\"PUBLISHER SALES\".REGIONS",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
+      "tableConstraints": [],
       "foreignKeys": [],
-      "indexes": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "SALES",
-      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALES",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
-      "remarks": "",
-      "primaryKey": {}
-    },
-    {
-      "foreignKeys": [],
       "indexes": [],
       "columns": [],
-      "name": "SALESDATA",
-      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALESDATA",
-      "type": "table",
-      "triggers": [],
-      "tableConstraints": [],
       "remarks": "",
-      "primaryKey": {}
+      "triggers": [],
+      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALES",
+      "type": "table"
+    },
+    {
+      "tableConstraints": [],
+      "foreignKeys": [],
+      "primaryKey": {},
+      "name": "SALESDATA",
+      "indexes": [],
+      "columns": [],
+      "remarks": "",
+      "triggers": [],
+      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALESDATA",
+      "type": "table"
     }
   ],
   "schemaCrawlerHeaderInfo": {
-    "crawlTimestamp": "2016-08-28 16:49:56",
-    "title": ""
+    "title": "",
+    "crawlTimestamp": "2017-12-22 20:52:43"
   },
   "routines": [
     {
       "name": "NEW_PUBLISHER",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.BOOKS.NEW_PUBLISHER",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "NEW_PUBLISHER",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.BOOKS.NEW_PUBLISHER",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "CUSTOMADD",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.BOOKS.CUSTOMADD",
       "type": "function",
-      "parameters": [],
-      "returnType": "does not return a table",
-      "remarks": ""
+      "returnType": "does not return a table"
     },
     {
       "name": "CUSTOMADD",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.BOOKS.CUSTOMADD",
       "type": "function",
-      "parameters": [],
-      "returnType": "does not return a table",
-      "remarks": ""
+      "returnType": "does not return a table"
     },
     {
       "name": "ALLOC_BLOCKS",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.ALLOC_BLOCKS",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "ALLOC_SINGLE_BLOCK",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.ALLOC_SINGLE_BLOCK",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "CONVERT_BLOCK",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.CONVERT_BLOCK",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "CREATE_EMPTY_BLOCK",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.CREATE_EMPTY_BLOCK",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_BLOCKS",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_BLOCKS",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_LOB",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_LOB",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_UNUSED",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_UNUSED",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_UNUSED_LOBS",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_UNUSED_LOBS",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DIVIDE_BLOCK",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.DIVIDE_BLOCK",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "MERGE_EMPTY_BLOCKS",
+      "remarks": "",
+      "parameters": [],
       "fullName": "PUBLIC.SYSTEM_LOBS.MERGE_EMPTY_BLOCKS",
       "type": "procedure",
-      "parameters": [],
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     }
   ]
 }]

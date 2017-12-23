@@ -3,251 +3,251 @@
   "tables": [
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "AUTHORS",
-      "fullName": "PUBLIC.BOOKS.AUTHORS",
-      "type": "table",
+      "columns": [],
       "remarks": "Contact details for book authors",
-      "primaryKey": {}
+      "fullName": "PUBLIC.BOOKS.AUTHORS",
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "AUTHORSLIST",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.BOOKS.AUTHORSLIST",
-      "type": "view",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "view"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "BOOKAUTHORS",
-      "fullName": "PUBLIC.BOOKS.BOOKAUTHORS",
-      "type": "table",
+      "columns": [],
       "remarks": "Relationship between books and their authors, \nalong with the latest updated information",
-      "primaryKey": {}
+      "fullName": "PUBLIC.BOOKS.BOOKAUTHORS",
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "BOOKS",
-      "fullName": "PUBLIC.BOOKS.BOOKS",
-      "type": "table",
+      "columns": [],
       "remarks": "Details for published books",
-      "primaryKey": {}
+      "fullName": "PUBLIC.BOOKS.BOOKS",
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "\"Global Counts\"",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.BOOKS.\"Global Counts\"",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "PUBLISHERS",
-      "fullName": "PUBLIC.BOOKS.PUBLISHERS",
-      "type": "table",
+      "columns": [],
       "remarks": "List of book publishers",
-      "primaryKey": {}
+      "fullName": "PUBLIC.BOOKS.PUBLISHERS",
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "EXTRA_PK",
-      "fullName": "PUBLIC.FOR_LINT.EXTRA_PK",
-      "type": "table",
+      "columns": [],
       "remarks": "Extra table with just a primary key",
-      "primaryKey": {}
+      "fullName": "PUBLIC.FOR_LINT.EXTRA_PK",
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "\"Global Counts\"",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.FOR_LINT.\"Global Counts\"",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "PUBLICATIONS",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.FOR_LINT.PUBLICATIONS",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "PUBLICATIONWRITERS",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.FOR_LINT.PUBLICATIONWRITERS",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "SELFREFERENCE",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.FOR_LINT.SELFREFERENCE",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "WRITERS",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.FOR_LINT.WRITERS",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "ΠΊΝΑΚΑΒΆΣΗΣΔΕΔΟΜΈΝΩΝ",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.FOR_LINT.ΠΊΝΑΚΑΒΆΣΗΣΔΕΔΟΜΈΝΩΝ",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "REGIONS",
+      "columns": [],
+      "remarks": "",
       "fullName": "PUBLIC.\"PUBLISHER SALES\".REGIONS",
-      "type": "table",
-      "remarks": "",
-      "primaryKey": {}
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "SALES",
-      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALES",
-      "type": "table",
+      "columns": [],
       "remarks": "",
-      "primaryKey": {}
+      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALES",
+      "type": "table"
     },
     {
       "foreignKeys": [],
-      "columns": [],
+      "primaryKey": {},
       "name": "SALESDATA",
-      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALESDATA",
-      "type": "table",
+      "columns": [],
       "remarks": "",
-      "primaryKey": {}
+      "fullName": "PUBLIC.\"PUBLISHER SALES\".SALESDATA",
+      "type": "table"
     }
   ],
   "schemaCrawlerHeaderInfo": {
-    "crawlTimestamp": "2016-08-28 16:49:55",
-    "title": ""
+    "title": "",
+    "crawlTimestamp": "2017-12-22 20:52:43"
   },
   "routines": [
     {
       "name": "NEW_PUBLISHER",
+      "remarks": "",
       "fullName": "PUBLIC.BOOKS.NEW_PUBLISHER",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "NEW_PUBLISHER",
+      "remarks": "",
       "fullName": "PUBLIC.BOOKS.NEW_PUBLISHER",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "CUSTOMADD",
+      "remarks": "",
       "fullName": "PUBLIC.BOOKS.CUSTOMADD",
       "type": "function",
-      "returnType": "does not return a table",
-      "remarks": ""
+      "returnType": "does not return a table"
     },
     {
       "name": "CUSTOMADD",
+      "remarks": "",
       "fullName": "PUBLIC.BOOKS.CUSTOMADD",
       "type": "function",
-      "returnType": "does not return a table",
-      "remarks": ""
+      "returnType": "does not return a table"
     },
     {
       "name": "ALLOC_BLOCKS",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.ALLOC_BLOCKS",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "ALLOC_SINGLE_BLOCK",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.ALLOC_SINGLE_BLOCK",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "CONVERT_BLOCK",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.CONVERT_BLOCK",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "CREATE_EMPTY_BLOCK",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.CREATE_EMPTY_BLOCK",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_BLOCKS",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_BLOCKS",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_LOB",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_LOB",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_UNUSED",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_UNUSED",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DELETE_UNUSED_LOBS",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.DELETE_UNUSED_LOBS",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "DIVIDE_BLOCK",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.DIVIDE_BLOCK",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     },
     {
       "name": "MERGE_EMPTY_BLOCKS",
+      "remarks": "",
       "fullName": "PUBLIC.SYSTEM_LOBS.MERGE_EMPTY_BLOCKS",
       "type": "procedure",
-      "returnType": "no result",
-      "remarks": ""
+      "returnType": "no result"
     }
   ]
 }]

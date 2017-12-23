@@ -570,13 +570,13 @@ PUBLIC.BOOKS.NEW_PUBLISHER                        [procedure, no result]
 PUBLIC.BOOKS.CUSTOMADD               [function, does not return a table]
 ------------------------------------------------------------------------
 1   ONE                               INTEGER, in                 
-2   TWO                               INTEGER, in                 
 
 
 
 PUBLIC.BOOKS.CUSTOMADD               [function, does not return a table]
 ------------------------------------------------------------------------
 1   ONE                               INTEGER, in                 
+2   TWO                               INTEGER, in                 
 
 
 
