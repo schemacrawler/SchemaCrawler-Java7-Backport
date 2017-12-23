@@ -215,12 +215,12 @@
     }
   ],
   "databaseInfo": {
-    "databaseProductVersion": "2.4.0",
+    "databaseProductVersion": "2.3.4",
     "databaseProductName": "HSQL Database Engine",
     "databaseUserName": "SA"
   },
   "schemaCrawlerHeaderInfo": {
-    "crawlTimestamp": "2016-12-24 14:20:32",
+    "crawlTimestamp": "2017-12-22 20:23:52",
     "title": ""
   },
   "routines": [
@@ -366,7 +366,7 @@
     }
   ],
   "jdbcDriverInfo": {
-    "driverVersion": "2.4.0",
+    "driverVersion": "2.3.4",
     "isJDBCCompliant": "true",
     "driverClassName": "org.hsqldb.jdbc.JDBCDriver",
     "driverName": "HSQL Database Engine Driver",

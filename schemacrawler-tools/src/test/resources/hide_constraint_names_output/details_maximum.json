@@ -1899,7 +1899,7 @@
     }
   ],
   "databaseInfo": {
-    "databaseProductVersion": "2.4.0",
+    "databaseProductVersion": "2.3.4",
     "databaseProductName": "HSQL Database Engine",
     "databaseProperties": [
       {
@@ -1989,13 +1989,11 @@
           "sql.pad_space",
           "sql.ref_integrity",
           "sql.regular_names",
-          "sql.restrict_exec",
           "sql.syntax_db2",
           "sql.syntax_mss",
           "sql.syntax_mys",
           "sql.syntax_ora",
           "sql.syntax_pgs",
-          "sql.sys_index_names",
           "sql.unique_nulls",
           "textdb.all_quoted",
           "textdb.cache_rows",
@@ -2029,7 +2027,7 @@
       {
         "name": "getDatabaseMinorVersion",
         "description": "database minor version",
-        "value": 4
+        "value": 3
       },
       {
         "name": "getDefaultTransactionIsolation",
@@ -2064,7 +2062,7 @@
       {
         "name": "getDriverMinorVersion",
         "description": "driver minor version",
-        "value": 4
+        "value": 3
       },
       {
         "name": "getExtraNameCharacters",
@@ -2114,7 +2112,7 @@
       {
         "name": "getJDBCMinorVersion",
         "description": "JDBC minor version",
-        "value": 2
+        "value": 0
       },
       {
         "name": "locatorsUpdateCopy",
@@ -2184,7 +2182,7 @@
       {
         "name": "getMaxLogicalLobSize",
         "description": "max logical lob size",
-        "value": 1099511627776
+        "value": 0
       },
       {
         "name": "getMaxProcedureNameLength",
@@ -2881,7 +2879,7 @@
     "databaseUserName": "SA"
   },
   "schemaCrawlerHeaderInfo": {
-    "crawlTimestamp": "2017-05-31 00:42:47",
+    "crawlTimestamp": "2017-12-22 20:21:24",
     "title": ""
   },
   "routines": [
@@ -2977,7 +2975,7 @@
     "cycle": false
   },
   "jdbcDriverInfo": {
-    "driverVersion": "2.4.0",
+    "driverVersion": "2.3.4",
     "isJDBCCompliant": "true",
     "driverClassName": "org.hsqldb.jdbc.JDBCDriver",
     "driverName": "HSQL Database Engine Driver",

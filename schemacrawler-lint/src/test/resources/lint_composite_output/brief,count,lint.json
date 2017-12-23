@@ -451,7 +451,7 @@
     }
   ],
   "schemaCrawlerHeaderInfo": {
-    "crawlTimestamp": "2017-05-31 00:50:30",
+    "crawlTimestamp": "2017-12-22 20:26:02",
     "title": ""
   }
 },
@@ -662,7 +662,7 @@
           "severity": "high",
           "description": "redundant index",
           "id": "schemacrawler.tools.linter.LinterRedundantIndexes",
-          "value": "SYS_IDX_FK_SELFREFERENCE_10212"
+          "value": "SYS_IDX_10212"
         },
         {
           "severity": "high",
