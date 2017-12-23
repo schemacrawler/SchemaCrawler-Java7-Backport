@@ -7,7 +7,7 @@
   <groupId>us.fatehi</groupId>
   <artifactId>schemacrawler-parent</artifactId>
   <packaging>pom</packaging>
-  <version>14.16.04-java7</version>
+  <version>14.16.04.01-java7</version>
   <name>SchemaCrawler [Parent]</name>
   <description>Free database schema discovery and comprehension tool</description>
   <url>https://github.com/sualeh/SchemaCrawler</url>
@@ -57,11 +57,7 @@
     <module>../schemacrawler-tools</module>
     <module>../schemacrawler-commandline</module>
     <module>../schemacrawler-integrations</module>
-    <module>../schemacrawler</module>
-
     <module>../schemacrawler-lint</module>
-
-    <module>../schemacrawler-dbtest</module>
 
     <module>../schemacrawler-db2</module>
     <module>../schemacrawler-hsqldb</module>
@@ -70,9 +66,6 @@
     <module>../schemacrawler-postgresql</module>
     <module>../schemacrawler-sqlite</module>
     <module>../schemacrawler-sqlserver</module>
-    <module>../schemacrawler-offline</module>
-
-    <module>../schemacrawler-distrib</module>
 
   </modules>
   <dependencies>

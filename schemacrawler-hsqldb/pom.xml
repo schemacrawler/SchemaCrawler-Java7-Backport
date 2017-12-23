@@ -7,7 +7,7 @@
   <parent>
     <groupId>us.fatehi</groupId>
     <artifactId>schemacrawler-parent</artifactId>
-    <version>14.16.04-java7</version>
+    <version>14.16.04.01-java7</version>
     <relativePath>../schemacrawler-parent/pom.xml</relativePath>
   </parent>
   <artifactId>schemacrawler-hsqldb</artifactId>
@@ -16,9 +16,9 @@
   <dependencies>
     <dependency>
       <groupId>us.fatehi</groupId>
-      <artifactId>schemacrawler</artifactId>
+      <artifactId>schemacrawler-tools</artifactId>
       <version>${project.version}</version>
-    </dependency>
+    </dependency>     
     <dependency>
       <groupId>us.fatehi</groupId>
       <artifactId>schemacrawler-testdb</artifactId>
@@ -40,6 +40,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>us.fatehi</groupId>
+      <artifactId>schemacrawler-commandline</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>     
+    <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>2.4.0</version>
@@ -58,13 +64,6 @@
               <Author>Sualeh Fatehi, sualeh@hotmail.com</Author>
             </manifestEntries>
           </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <configuration>
-          <skip>false</skip>
         </configuration>
       </plugin>
     </plugins>
