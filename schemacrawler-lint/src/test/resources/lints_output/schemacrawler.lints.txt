@@ -35,10 +35,10 @@
 [PUBLIC.FOR_LINT.WRITERS] column where NULL may be intended: ADDRESS2
 [PUBLIC.FOR_LINT.WRITERS] column where NULL may be intended: COUNTRY
 [PUBLIC.FOR_LINT.WRITERS] badly named column: COUNTRY
-[PUBLIC.FOR_LINT.WRITERS] incrementing columns: ADDRESS1, ADDRESS2
 [PUBLIC.FOR_LINT.WRITERS] incrementing columns: PHONE1, PHONE2
 [PUBLIC.FOR_LINT.WRITERS] incrementing columns: FAX, FAX3
 [PUBLIC.FOR_LINT.WRITERS] incrementing columns: EMAIL1, EMAIL2
+[PUBLIC.FOR_LINT.WRITERS] incrementing columns: ADDRESS1, ADDRESS2
 [PUBLIC.FOR_LINT.WRITERS] incrementing columns: HOMEEMAIL11, HOMEEMAIL12
 [PUBLIC.FOR_LINT.WRITERS] incrementing columns are not consecutive: FAX, FAX3
 [PUBLIC.FOR_LINT.WRITERS] incrementing columns don't have the same data-type: PHONE1, PHONE2
@@ -53,4 +53,4 @@
 [PUBLIC.FOR_LINT.ΠΊΝΑΚΑΒΆΣΗΣΔΕΔΟΜΈΝΩΝ] should have remarks
 [PUBLIC.FOR_LINT.ΠΊΝΑΚΑΒΆΣΗΣΔΕΔΟΜΈΝΩΝ] should have remarks: ΣΤΉΛΗΒΆΣΗΣΔΕΔΟΜΈΝΩΝ, ΆΛΛΗΣΤΉΛΗΒΆΣΗΣΔΕΔΟΜΈΝΩΝ, ΣΥΓΓΡΑΦΈΑΣ
 [catalog] column with same name but different data types: ID [BIGINT, INTEGER]
-[catalog] cycles in table relationships: PUBLICATIONS, WRITERS
+[catalog] cycles in table relationships: WRITERS, PUBLICATIONS

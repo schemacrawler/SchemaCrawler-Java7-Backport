@@ -29,6 +29,7 @@ http://www.gnu.org/licenses/
 package schemacrawler.integration.test;
 
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import schemacrawler.schemacrawler.RegularExpressionExclusionRule;
@@ -49,6 +50,7 @@ public class ScriptingTest
                       "script_output.txt");
   }
 
+  @Ignore
   @Test
   public void executableJavaScript()
     throws Exception
